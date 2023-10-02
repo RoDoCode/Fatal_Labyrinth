@@ -36,15 +36,17 @@ security_guard_larry = Character(data[5][1], data[5][2], data[5][3], data[5][4],
 
 print(player.name)
 
-# GAME START 
+# GAME START
 
 print("You wake to find yourself in a dark stone corridor, the floor is sand, the air is musty, in your hand a glowing sphere throbs gently.")
 print("The Orb pulses and a voice emanates from inside.")
 while True:
-    memoryOfName = input("Helpful Orb: Hello again, do you remember your name? (yes/no): ")
+    print("Helpful Orb: Hello again, do you remember your name? (yes/no) ")
+    memoryOfName = input("> ")
     if memoryOfName.lower() in ["yes", "y"]:
         print("Good start.")
-        player.name = input("...so, what is your name?")
+        print("...so, what is your name?")
+        player.name = input("> ")
         print(f'Well {player.name}, where are you from?')
         player.home = input(">")
         break
@@ -55,25 +57,44 @@ while True:
     else:
         print("This is no time for weird answers. Just say yes or no.")
 
+print(f'Well {player.name} this whole situation may seem a little disconcerting at first.')
+
+while True:
+    print("Do you remember what happened a moment ago? (yes/no) ")
+    playerRemembers = input("> ")
+    if playerRemembers.lower() in ["yes", "y"]:
+        print("You probably already died at least once then. Oh well I don't need to go over anything then. Lets try not to do whatever it was we did before. Onward!")
+        break
+    elif playerRemembers.lower() in ["no", "n"]:
+        print("I thought you mightn't. I'm The Orb of Helping. You brought me to this danger filled labyrinth to help you find an ancient relic. We set off a booby-trap which appears to have given you mild magical amnesia. We are lost, currently escaping, and now you're caught up. Let's go!")
+        break
+    else:
+        print("Oh he's gone mad... I was worried this would happen. I'll speak slower.")
+
+print("There is a fork in the tunnel ahead.")
+print("The right path has a rune on the wall, from the left the air smells fresher")
+
+while True:
+    print("Do you go left or right? (L/R) ")
+    forkOne = input("> ")
+    if forkOne.lower() in ["left", "l"]:
+        print("UNKNOWN")
+        break
+    elif forkOne.lower() in ["right", "r"]:
+        print("As you cross the threshold of the right tunnel you feel invigorated, the rune on the wall glows briefly.")
+        break
+    else:
+        print("We need to pick a tunnel, not stand here nattering.")
+
+
 """
-Well -playerName- this whole situation may seem a little disconcerting at first.
-Do you remember what happened a moment ago? - playerRemembers
-    - You probably already died at least once then. Oh well I don't need to go 
-    over anything then. Lets try not to do whatever it was we did before. Onward!
-    - I thought you mightn't. I'm The Orb of Helping. 
-      You brought me to this danger filled labyrinth to help you 
-      find an ancient relic. We set off a booby-trap which appears
-      to have given you mild magical amnesia. We are lost, currently
-      escaping, and now you're caught up.
-There's a fork in the tunnel ahead, right ot left? 
-(right has a rune on the wall, left the air smells fresher) -forkOne
 Forgot to mention you have a sword and a few trinkets. Press "I" to check your inventory.
 [sword, unspooling string, glowing potion bottle, clothes-on-your-back, gold coins in brown envelope]
 Excellent, lets get moving. I'll tell you more on the way
 
 right
 Rune embews player with extra attack strength x2
-When you cross the threshold of the right tunnel you feel invigorated, the rune on the wall glows briefly.
+
 Mopey Goblin Encounter: 
 You travel down the gloomey tunnels lit only by the Helpful Orb until you come to a corner with a bench 
 hewn from the rockwall. Sat on the bench is a goblin, his head is downcast and he doesnt notice you. He 
