@@ -19,26 +19,38 @@ data = characters.get_all_values()
 
 
 # CHARACTER BUILDING
-
+# This forms character details and stats used in game mechanics
 class Character:
-  def __init__(self, name, home, health, attack, defense):
-    self.name = name
-    self.home = home
-    self.health = health
-    self.attack = attack
-    self.defense = defense
+    def __init__(self, name, home, health, attack, defense):
+        self.name = name
+        self.home = home
+        self.health = health
+        self.attack = attack
+        self.defense = defense
+
 
 player = Character(data[1][1], data[1][2], data[1][3], data[1][4], data[1][5])
-mopey_goblin = Character(data[2][1], data[2][2], data[2][3], data[2][4], data[2][5])
-naked_wizard = Character(data[3][1], data[3][2], data[3][3], data[3][4], data[3][5])
-hummus_demon = Character(data[4][1], data[4][2], data[4][3], data[4][4], data[4][5])
-security_guard_larry = Character(data[5][1], data[5][2], data[5][3], data[5][4], data[5][5])
+mopey_goblin = Character(data[2][1], data[2][2], data[2][3], data[2][4], 
+                         data[2][5])
+naked_wizard = Character(data[3][1], data[3][2], data[3][3], data[3][4], 
+                         data[3][5])
+hummus_demon = Character(data[4][1], data[4][2], data[4][3], data[4][4], 
+                         data[4][5])
+security_guard_larry = Character(data[5][1], data[5][2], data[5][3], 
+                                 data[5][4], data[5][5])
 
-print(player.name)
+# FUNCTIONS
+
+def rune():
+    print player.attack
+    player.attack = (player.attack * 2)
+    print(f'Your attack strength has double')
+    print(player.attack)
 
 # GAME START
 
-print("You wake to find yourself in a dark stone corridor, the floor is sand, the air is musty, in your hand a glowing sphere throbs gently.")
+print("You wake to find yourself in a dark stone corridor, the floor is sand.")
+print("The air is musty, in your hand a glowing sphere throbs gently.")
 print("The Orb pulses and a voice emanates from inside.")
 while True:
     print("Helpful Orb: Hello again, do you remember your name? (yes/no) ")
@@ -51,25 +63,36 @@ while True:
         player.home = input(">")
         break
     elif memoryOfName.lower() in ["no", "n"]:
-        print(f"Okay, no stress. It's ummmm... {player.name}! Your name is {player.name}. Yes.")
+        print(f"Okay, no stress. It's ummmm... {player.name}! Your name is \
+{player.name}. Yes.")
         print(f'And in case you were wondering you are from...{player.home}')
         break
     else:
         print("This is no time for weird answers. Just say yes or no.")
 
-print(f'Well {player.name} this whole situation may seem a little disconcerting at first.')
+print(f'Well {player.name} this whole situation may seem a little \
+disconcerting at first.')
 
 while True:
     print("Do you remember what happened a moment ago? (yes/no) ")
     playerRemembers = input("> ")
     if playerRemembers.lower() in ["yes", "y"]:
-        print("You probably already died at least once then. Oh well I don't need to go over anything then. Lets try not to do whatever it was we did before. Onward!")
+        print("You probably already died at least once then.")
+        print("Oh well I don't need to go over anything.")
+        print("Lets try not to do whatever it was we did before. Onward!")
         break
     elif playerRemembers.lower() in ["no", "n"]:
-        print("I thought you mightn't. I'm The Orb of Helping. You brought me to this danger filled labyrinth to help you find an ancient relic. We set off a booby-trap which appears to have given you mild magical amnesia. We are lost, currently escaping, and now you're caught up. Let's go!")
+        print("I thought you mightn't. I'm The Orb of Helping.") 
+        print("You brought me to this danger filled labyrinth,")
+        print("to help you find an ancient relic.")
+        print("We set off a booby-trap,")
+        print("which appears to have given you mild magical amnesia.")
+        print("We are lost, currently escaping, and now you're all caught up.")
+        print("Let's go!")
         break
     else:
-        print("Oh he's gone mad... I was worried this would happen. I'll speak slower.")
+        print("Oh he's gone mad... I was worried this would happen.")
+        print("I'll speak slower.")
 
 print("There is a fork in the tunnel ahead.")
 print("The right path has a rune on the wall, from the left the air smells fresher")
@@ -81,7 +104,8 @@ while True:
         print("UNKNOWN")
         break
     elif forkOne.lower() in ["right", "r"]:
-        print("As you cross the threshold of the right tunnel you feel invigorated, the rune on the wall glows briefly.")
+        print("As you cross the threshold of the right tunnel")
+        print("you feel invigorated, the rune on the wall glows briefly.")
         break
     else:
         print("We need to pick a tunnel, not stand here nattering.")
