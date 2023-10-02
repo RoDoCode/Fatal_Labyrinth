@@ -16,28 +16,46 @@ SHEET = GSPREAD_CLIENT.open('fatal_labyrinth')
 
 characters = SHEET.worksheet('characters')
 data = characters.get_all_values()
-print(data)
+
+
+# CHARACTER BUILDING
+
+class Character:
+  def __init__(self, name, home, health, attack, defense):
+    self.name = name
+    self.home = home
+    self.health = health
+    self.attack = attack
+    self.defense = defense
+
+player = Character(data[1][1], data[1][2], data[1][3], data[1][4], data[1][5])
+mopey_goblin = Character(data[2][1], data[2][2], data[2][3], data[2][4], data[2][5])
+naked_wizard = Character(data[3][1], data[3][2], data[3][3], data[3][4], data[3][5])
+hummus_demon = Character(data[4][1], data[4][2], data[4][3], data[4][4], data[4][5])
+security_guard_larry = Character(data[5][1], data[5][2], data[5][3], data[5][4], data[5][5])
+
+print(player.name)
 
 # GAME START 
-playerName = "Bob"
-playerHome = "Croydon"
 
 print("You wake to find yourself in a dark stone corridor, the floor is sand, the air is musty, in your hand a glowing sphere throbs gently.")
-print("The Orb pulses and a voice emanates from inside it.")
+print("The Orb pulses and a voice emanates from inside.")
 while True:
     memoryOfName = input("Helpful Orb: Hello again, do you remember your name? (yes/no): ")
     if memoryOfName.lower() in ["yes", "y"]:
         print("Good start.")
-        playerName = input("...so, what is your name?")
-        playerHome = input(f'Well {playerName}, where are you from?')
+        player.name = input("...so, what is your name?")
+        print(f'Well {player.name}, where are you from?')
+        player.home = input(">")
         break
     elif memoryOfName.lower() in ["no", "n"]:
-        print("Okay, no stress. It's ummmm... Bob! Your name is Bob. Yes.")
-        print(f'And in case you were wondering you are from...{playerHome}')
+        print(f"Okay, no stress. It's ummmm... {player.name}! Your name is {player.name}. Yes.")
+        print(f'And in case you were wondering you are from...{player.home}')
         break
     else:
         print("This is no time for weird answers. Just say yes or no.")
 
+"""
 Well -playerName- this whole situation may seem a little disconcerting at first.
 Do you remember what happened a moment ago? - playerRemembers
     - You probably already died at least once then. Oh well I don't need to go 
