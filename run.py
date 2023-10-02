@@ -18,22 +18,26 @@ characters = SHEET.worksheet('characters')
 data = characters.get_all_values()
 print(data)
 
-"""
-name = input("Hello again, do you remember your name?")
-print("Good start. Well " + name + ", this whole situation may seem a little disconcerting at first.")
-player_remembers = input("Do you remember what happened a moment ago?")
-print("Thats a relief. I don't need to go over anything then. Let's push on.)
-supplies = input("But I digress and we don't have much time. Do you have money and a weapon? Yes or no?")
-print(supplies);
-if supplies == "yes" or "Yes": print("Excellent, lets get moving. I'll tell you more on the way")
-elif supplies == "no" or "No": print("Then we better tool up. Look around for a weapon.")
-else: print("This is no time to mess around " + name + " from " + origin_location)
+# GAME START 
+playerName = "Bob"
+playerHome = "Croydon"
 
-"""
-"""
-Hello again, do you remember your name? - playerName
-Good start. 
-And where are you from? -playerHome
+print("You wake to find yourself in a dark stone corridor, the floor is sand, the air is musty, in your hand a glowing sphere throbs gently.")
+print("The Orb pulses and a voice emanates from inside it.")
+while True:
+    memoryOfName = input("Helpful Orb: Hello again, do you remember your name? (yes/no): ")
+    if memoryOfName.lower() in ["yes", "y"]:
+        print("Good start.")
+        playerName = input("...so, what is your name?")
+        playerHome = input(f'Well {playerName}, where are you from?')
+        break
+    elif memoryOfName.lower() in ["no", "n"]:
+        print("Okay, no stress. It's ummmm... Bob! Your name is Bob. Yes.")
+        print(f'And in case you were wondering you are from...{playerHome}')
+        break
+    else:
+        print("This is no time for weird answers. Just say yes or no.")
+
 Well -playerName- this whole situation may seem a little disconcerting at first.
 Do you remember what happened a moment ago? - playerRemembers
     - You probably already died at least once then. Oh well I don't need to go 
