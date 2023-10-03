@@ -54,16 +54,16 @@ securityGuardLarry = Character(data[6][1], data[6][2], data[6][3],
                                data[6][8])
 
 
-# FUNCTIONS
+# MECHANICAL FUNCTIONS
 
 def inventory(Character):
-    print(f' You are armed with a {Character.weapon}, wearing ' +
-          f'{Character.clothes} and carrying a {Character.item1}.')
+    print(f'\nYou are armed with a {Character.weapon}, wearing ' +
+          f'{Character.clothes} and carrying a {Character.item1}.\n')
 
 
 def rune(Character):
     player.attack = ((int(Character.attack)) * 2)
-    print(f'Your attack strength has doubled')
+    print(f'\nYour attack strength has doubled\n')
 
 
 def exchangeWeapons(player, mopey_goblin):
@@ -78,31 +78,46 @@ def noClothes(player):
     player.defense = 0
 
 
+# NARRATIVE FUNCTIONS
+
+
+def introFunc():
+    while True:
+        print("Do you remember your name? (yes/no)")
+        print('Enter "I" at anytime to check your inventory.')
+        memoryOfName = input("> ")
+        if memoryOfName.lower() in ["yes", "y"]:
+            print("\n         :Helpful Orb:")
+            print("Good start.")
+            print("...so, what is your name?")
+            player.name = input("> ")
+            print(f'Well {player.name}, where are you from?')
+            player.home = input(">")
+            break
+        elif memoryOfName.lower() in ["no", "n"]:
+            print("\n         :Helpful Orb:")
+            print(f"Okay, no stress. It's ummmm... {player.name}! Your name \
+is {player.name}. Yes.")
+            print(f"And in case you're wondering you are from...{player.home}")
+            break
+        elif memoryOfName.lower() in ["i", "inventory"]:
+            inventory(player)
+        else:
+            print("\n         :Helpful Orb:")
+            print("This is no time for weird answers. Just say yes or no.")
+
+
 # GAME START
 
 # Chapter 1 - Intro 
+print("YOU ARE IN THE FATAL LABYRINTH\n")
 print("You wake to find yourself in a dark stone corridor, the floor is sand.")
 print("The air is musty, in your hand a glowing sphere throbs gently.")
-print("The Orb pulses and a voice emanates from inside.")
-while True:
-    print("Helpful Orb: Hello again, do you remember your name? (yes/no) ")
-    memoryOfName = input("> ")
-    if memoryOfName.lower() in ["yes", "y"]:
-        print("Good start.")
-        print("...so, what is your name?")
-        player.name = input("> ")
-        print(f'Well {player.name}, where are you from?')
-        player.home = input(">")
-        break
-    elif memoryOfName.lower() in ["no", "n"]:
-        print(f"Okay, no stress. It's ummmm... {player.name}! Your name is \
-{player.name}. Yes.")
-        print(f'And in case you were wondering you are from...{player.home}')
-        break
-    elif memoryOfName.lower() in ["i", "inventory"]:
-        inventory(player)
-    else:
-        print("This is no time for weird answers. Just say yes or no.")
+print("The Orb pulses and a voice emanates from inside.\n")
+print("         :Helpful Orb:")
+print("Hello again")
+
+introFunc()
 
 print(f'Well {player.name} this whole situation may seem a little \
 disconcerting at first.')
@@ -111,68 +126,97 @@ while True:
     print("Do you remember what happened a moment ago? (yes/no) ")
     playerRemembers = input("> ")
     if playerRemembers.lower() in ["yes", "y"]:
+        print("\n         :Helpful Orb:")
         print("You probably already died at least once then.")
-        print("Oh well I don't need to go over anything.")
-        print("Lets try not to do whatever it was we did before. Onward!")
+        print("The Labyrinth seems to respawn you at this moment in time.")
+        print("Oh well, at least I don't need to go over anything.")
+        print("Lets try not to do whatever it was we did before. Onward!\n")
         break
     elif playerRemembers.lower() in ["no", "n"]:
+        print("\n         :Helpful Orb:")
         print("I thought you mightn't. I'm The Orb of Helping.") 
         print("You brought me to this danger filled labyrinth,")
         print("to help you find an ancient relic.")
         print("We set off a booby-trap,")
         print("which appears to have given you mild magical amnesia.")
         print("We are lost, currently escaping, and now you're all caught up.")
-        print("Let's go!")
+        print("Let's go!\n")
         break
+    elif playerRemembers.lower() in ["i", "inventory"]:
+        inventory(player)
     else:
+        print("\n         :Helpful Orb:")
         print("Oh he's gone mad... I was worried this would happen.")
         print("I'll speak slower.")
 
+print("\n         :YOU PROCEED:")
 print("There is a fork in the tunnel ahead.")
-print("The right path has a rune on the wall, from the left the air smells fresher")
+print("The right path has a rune on the wall.")
+print("The left path has fresher smelling air.")
 
 while True:
-    print("Do you go left or right? (L/R) ")
+    print("\nDo you choose to go left or right? (L/R) ")
     forkOne = input("> ")
     if forkOne.lower() in ["left", "l"]:
         print("UNKNOWN")
         break
     elif forkOne.lower() in ["right", "r"]:
-        print("As you cross the threshold of the right tunnel")
+        print("\nAs you cross the threshold of the right tunnel")
         print("you feel invigorated, the rune on the wall glows briefly.")
         rune(player)
         break
+    elif memoryOfName.lower() in ["i", "inventory"]:
+        inventory(player)
     else:
         print("We need to pick a tunnel, not stand here nattering.")
 
 # Chapter 2A - Right Fork - Mopey Goblin Encounter
+
+print("You travel down the gloomey tunnels")
+print("Light comes only from the Helpful Orb")
+print("You round a corner to find a bench up ahead hewn into the rock wall")
+print("Sat on the bench is a goblin, his head is downcast, crying")
+print("He hasn't noticed you yet") 
+print("A wicked looking axe in his hand is drenched in blood, it drips.\n")
+
+while True:
+    print("Would you like to:")
+    print("1- Ask if he is okay?")
+    print("2- Sneak attack with your sword")
+    print("3- Hurl the Helpful Orb at him")
+    print("4- Take off your clothes and run at him")
+    print('Enter the number of your choice')
+    mopeyGoblinEncounter = input("> ")
+    if mopeyGoblinEncounter.str.lower() in ["1", "one"]:
+        print("\nYou call to him.")
+        print('"Are you alright friend?"')
+        print("\n         :Mopey Goblin:")
+        print("Other Goblins soaked mi' axe in pigs blood, it's disgusting.")
+        print("Just had a rubbish day really, I'm alright.")
+        print("Thanks for asking. Do you need something?")
+        break
+    elif mopeyGoblinEncounter.str.lower() in ["2", "two"]:
+        print("\n")
+        break
+    elif mopeyGoblinEncounter.str.lower() in ["3", "three"]:
+        print("\n")
+        break
+    elif mopeyGoblinEncounter.str.lower() in ["4", "four"]:
+        print("\n")
+        break
+    elif mopeyGoblinEncounter.lower() in ["i", "inventory"]:
+        inventory(player)
+    else:
+        print("\nOnly death lies behind")
+        print("You must choose.")
+        
 """
-Forgot to mention you have a sword and a few trinkets. Press "I" to check your inventory.
-[sword, unspooling string, glowing potion bottle, clothes-on-your-back, gold coins in brown envelope]
-Excellent, lets get moving. I'll tell you more on the way
-
-right
-Rune embews player with extra attack strength x2
-
-Mopey Goblin Encounter: 
-You travel down the gloomey tunnels lit only by the Helpful Orb until you come to a corner with a bench 
-hewn from the rockwall. Sat on the bench is a goblin, his head is downcast and he doesnt notice you. He 
-appears to be sad. You notice he has a wicked looking axe in his hand which is drenched in blood, it drips
-from the serrated black blade.
-    - Ask if he is okay?
-    - Sneak attack with your sword
-    - Hurl the Helpful Orb at him
-    - Take off your clothes
-Ask if he's okay?
-    Are you alright friend? 
-    Mopey Goblin: The other Goblins soaked my axe in pigs blood as a joke and now it's disgusting. 
-    I've just had a rubbish day, I'm alright really. Thanks for asking. Do you need something? 
         1a Just looking for the way out? - Mopey_Goblin gives bad advice
         2a No, I'm taking my orb for a walk. Hope your stuff all works out. - Mopey_Goblin goes back to moping
         3a I'll trade you this clean sword for that manky axe if you like? - Mopey_Goblin accepts trade
             Mopey_Goblin: 1a Oh just go back the way I came, take the second left after the screaming bulls head on 
                              the wall and head straight. Can't miss it
-                          2a "Lovely orb. Have a nice walk." Begins to mop blood off the axe and ignores you.
+                          2a "Lovely looking orb. Have a nice walk." Begins to mop blood off the axe and ignores you.
                           3a That would be really great. Here you go, it's a brilliant axe once you've cleaned it. 
                             Thank you. I wouldn't hang about, the others arent keen on humans. You seem like one of
                             the good ones though
