@@ -41,11 +41,13 @@ security_guard_larry = Character(data[5][1], data[5][2], data[5][3],
 
 # FUNCTIONS
 
-def rune():
-    print player.attack
-    player.attack = (player.attack * 2)
-    print(f'Your attack strength has double')
-    print(player.attack)
+def rune(Character):
+    player.attack = ((int(Character.attack)) * 2)
+    print(f'Your attack strength has doubled')
+
+
+def exchangeWeapons(Character, Character)
+    
 
 # GAME START
 
@@ -106,6 +108,7 @@ while True:
     elif forkOne.lower() in ["right", "r"]:
         print("As you cross the threshold of the right tunnel")
         print("you feel invigorated, the rune on the wall glows briefly.")
+        rune(player)
         break
     else:
         print("We need to pick a tunnel, not stand here nattering.")
