@@ -19,38 +19,68 @@ data = characters.get_all_values()
 
 
 # CHARACTER BUILDING
-# This forms character details and stats used in game mechanics
+# This forms player and story character details and stats used in game mechanics
 class Character:
-    def __init__(self, name, home, health, attack, defense):
+    def __init__(self, name, home, health, attack, defense, weapon, clothes, item1):
         self.name = name
         self.home = home
         self.health = health
         self.attack = attack
         self.defense = defense
+        self.weapon = weapon
+        self.clothes = clothes
+        self.item1 = item1
 
 
-player = Character(data[1][1], data[1][2], data[1][3], data[1][4], data[1][5])
-mopey_goblin = Character(data[2][1], data[2][2], data[2][3], data[2][4], 
-                         data[2][5])
-naked_wizard = Character(data[3][1], data[3][2], data[3][3], data[3][4], 
-                         data[3][5])
-hummus_demon = Character(data[4][1], data[4][2], data[4][3], data[4][4], 
-                         data[4][5])
-security_guard_larry = Character(data[5][1], data[5][2], data[5][3], 
-                                 data[5][4], data[5][5])
+# All stats are taken from connected GoogleSheet for easy manipulation
+player = Character(data[1][1], data[1][2], data[1][3], data[1][4], data[1][5],
+                   data[1][6], data[1][7], data[1][8])
+
+helpfulOrb = Character(data[2][1], data[2][2], data[2][3], data[2][4],
+                       data[2][5], data[2][6], data[2][7], data[2][8])
+
+mopeyGoblin = Character(data[3][1], data[3][2], data[3][3], data[3][4],
+                        data[3][5], data[3][6], data[3][7], data[3][8])
+
+nakedWizard = Character(data[4][1], data[4][2], data[4][3], data[4][4],
+                        data[4][5], data[4][6], data[4][7], data[4][8])
+
+hummusDemon = Character(data[5][1], data[5][2], data[5][3],
+                        data[5][4], data[5][5], data[5][6], data[5][7],
+                        data[5][8])
+
+securityGuardLarry = Character(data[6][1], data[6][2], data[6][3],
+                               data[6][4], data[6][5], data[6][6], data[6][7], 
+                               data[6][8])
+
 
 # FUNCTIONS
+
+def inventory(Character):
+    print(f' You are armed with a {Character.weapon}, wearing ' +
+          f'{Character.clothes} and carrying a {Character.item1}.')
+
 
 def rune(Character):
     player.attack = ((int(Character.attack)) * 2)
     print(f'Your attack strength has doubled')
 
 
-def exchangeWeapons(Character, Character)
-    
+def exchangeWeapons(player, mopey_goblin):
+    player.attack = 80
+    player.weapon = "bloodied axe"
+    mopeyGoblin.attack = 25
+    mopeyGoblin.weapon = "shiny sword"
+
+
+def noClothes(player):
+    player.clothes = "nothing"
+    player.defense = 0
+
 
 # GAME START
 
+# Chapter 1 - Intro 
 print("You wake to find yourself in a dark stone corridor, the floor is sand.")
 print("The air is musty, in your hand a glowing sphere throbs gently.")
 print("The Orb pulses and a voice emanates from inside.")
@@ -69,6 +99,8 @@ while True:
 {player.name}. Yes.")
         print(f'And in case you were wondering you are from...{player.home}')
         break
+    elif memoryOfName.lower() in ["i", "inventory"]:
+        inventory(player)
     else:
         print("This is no time for weird answers. Just say yes or no.")
 
@@ -113,7 +145,7 @@ while True:
     else:
         print("We need to pick a tunnel, not stand here nattering.")
 
-
+# Chapter 2A - Right Fork - Mopey Goblin Encounter
 """
 Forgot to mention you have a sword and a few trinkets. Press "I" to check your inventory.
 [sword, unspooling string, glowing potion bottle, clothes-on-your-back, gold coins in brown envelope]
