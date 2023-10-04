@@ -63,7 +63,6 @@ def inventory(Character):
 
 def rune(Character):
     player.attack = ((int(Character.attack)) * 2)
-    print(f'\nYour attack strength has doubled\n')
 
 
 def exchangeWeapons(player, mopey_goblin):
@@ -91,13 +90,18 @@ def introFunc():
             print("Good start.")
             print("...so, what is your name?")
             player.name = input("> ")
+            if player.name.lower() in ["bob", "robert"]:
+                print("\n         :Helpful Orb:")
+                print("You look like a Bob!")
+                print("We are going to get on great Bob.")
+                print("I love that name. Bob, Bob, Bob. I could say it all day.")
             print(f'Well {player.name}, where are you from?')
             player.home = input(">")
             break
         elif memoryOfName.lower() in ["no", "n"]:
             print("\n         :Helpful Orb:")
-            print(f"Okay, no stress. It's ummmm... {player.name}! Your name \
-is {player.name}. Yes.")
+            print(f"Okay, no stress. It's ummmm... {player.name}! Your name " +
+                  f"is {player.name}. Yes.")
             print(f"And in case you're wondering you are from...{player.home}")
             break
         elif memoryOfName.lower() in ["i", "inventory"]:
@@ -106,6 +110,128 @@ is {player.name}. Yes.")
             print("\n         :Helpful Orb:")
             print("This is no time for weird answers. Just say yes or no.")
 
+
+def deathMemoryFunc():
+    while True:
+        print("Do you remember what happened a moment ago? (yes/no) ")
+        playerRemembers = input("> ")
+        if playerRemembers.lower() in ["yes", "y"]:
+            print("\n         :Helpful Orb:")
+            print("You probably already died at least once then.")
+            print("The Labyrinth seems to respawn you at this moment in time.")
+            print("Oh well, at least I don't need to go over anything.")
+            print("Lets try not to do whatever it was we did before. " + 
+                  "Onward!\n")
+            break
+        elif playerRemembers.lower() in ["no", "n"]:
+            print("\n         :Helpful Orb:")
+            print("I thought you mightn't. I'm The Orb of Helping.") 
+            print("You brought me to this danger filled labyrinth,")
+            print("to help you find an ancient relic.")
+            print("We set off a booby-trap,")
+            print("which appears to have given you mild magical amnesia.")
+            print("We are lost, currently escaping, and now you're all " +
+                  "caught up.")
+            print("Let's go!\n")
+            break
+        elif playerRemembers.lower() in ["i", "inventory"]:
+            inventory(player)
+        else:
+            print("\n         :Helpful Orb:")
+            print("Oh he's gone mad... I was worried this would happen.")
+            print("I'll speak slower.")
+
+
+def firstChoiceFunc():
+    while True:
+        print("\nDo you choose to go left or right? (L/R) ")
+        forkOne = input("> ")
+        if forkOne.lower() in ["left", "l"]:
+            print("     -You proceed into the Labyrinth")
+            print("You chat to the orb in your hand as you pad down the hall.")
+            print("It's nice to meet someone with similar interests.")
+            print("There is a rushing sound of wind ahead.")
+            print("You turn a corner to find an Air Elemental facing you.")
+            print("The being of pure wind gusts towards you.")
+            print("You have no defense for this!")
+            print("The orb is knocked from your hand, you hear a smash" + 
+                  " and the hall goes dark")
+            print("You are pressed against the wall as the air is forced " +
+                  "from your lungs.")
+            print("You gasp for your last breath in the darkness of the " +
+                  "labyrinth")
+            print("YOU ARE DEAD - TRY AGAIN")
+            print(f'{player.name} of {player.home} is no more.')
+            exit()
+        elif forkOne.lower() in ["right", "r"]:
+            print("\nAs you cross the threshold of the right tunnel")
+            print("you feel invigorated, the rune on the wall glows briefly.")
+            rune(player)
+            break
+        elif memoryOfName.lower() in ["i", "inventory"]:
+            inventory(player)
+        else:
+            print("We need to pick a tunnel, not stand here nattering.")
+
+def goblinEncounterFunc():
+    while True:
+        print("Would you like to:")
+        print("1- Ask if he is okay?")
+        print("2- Sneak attack with your sword")
+        print("3- Hurl the Helpful Orb at him")
+        print("4- Take off your clothes and run at him")
+        print('Enter the number of your choice:')
+        mopeyGoblinEncounter = input("> ")
+        if mopeyGoblinEncounter.lower() in ["1", "one"]:
+            print(f"\n           :{player.name}:")
+            print('"Are you alright friend?"')
+            print("\n         :Mopey Goblin:")
+            print("Other Gobbos soaked my axe in pigs blood, it's ruined.")
+            print("Just having a rubbish day, I'm alright.")
+            print("Thanks for asking. Do you need something?")
+            goblinsQuestionFunc()
+            break
+        elif mopeyGoblinEncounter.lower() in ["2", "two"]:
+            print("\n")
+            break
+        elif mopeyGoblinEncounter.lower() in ["3", "three"]:
+            print("\n")
+            break
+        elif mopeyGoblinEncounter.lower() in ["4", "four"]:
+            print("\n")
+            break
+        elif mopeyGoblinEncounter.lower() in ["i", "inventory"]:
+            inventory(player)
+        else:
+            print("\nOnly death lies behind")
+            print("You must choose.")
+
+def goblinsQuestionFunc():
+    while True:
+        print('1- "Just looking for the way out mate?"')
+        print('2- "No, I am taking my orb for a walk. Hope your stuff all works out."')
+        print('3- "I will trade you this clean sword for that dirty axe if you like?"')
+        print('Enter the number of your choice')
+        mopeyGoblinQuestion = input("> ")
+        if mopeyGoblinQuestion.lower() in ["1", "one"]:
+            print("Oh just go back the way I came, take the second left after the screaming bulls head on the wall and head straight. Can't miss it")
+        elif mopeyGoblinQuestion.lower() in ["2", "two"]:
+            print("          :Mopey Goblin:")
+            print("Lovely looking orb. Have a nice walk.\n")
+            print("He begins to mop blood off the axe and ignores you.")
+            print("As you stroll passed him you hear a flurry of motion")
+            print("The axe bites into your back.")
+            print("You fall to the floor. Your body goes numb.")
+            print("This isn't how it was meant to end.")
+            print("The orb falls to the floor and the Mopey Goblin picks it up.")
+            print("He gives you a grin...and swings the axe up above his head.")
+            print("YOU ARE DEAD - TRY AGAIN")
+            print(f'{player.name} of {player.home} is no more.')
+            exit()
+        elif mopeyGoblinQuestion.lower() in ["3", "three"]:
+            print("hurray")
+        else:
+            print("The Mopey Goblin stares at you intently, waiting.")
 
 # GAME START
 
@@ -122,60 +248,21 @@ introFunc()
 print(f'Well {player.name} this whole situation may seem a little \
 disconcerting at first.')
 
-while True:
-    print("Do you remember what happened a moment ago? (yes/no) ")
-    playerRemembers = input("> ")
-    if playerRemembers.lower() in ["yes", "y"]:
-        print("\n         :Helpful Orb:")
-        print("You probably already died at least once then.")
-        print("The Labyrinth seems to respawn you at this moment in time.")
-        print("Oh well, at least I don't need to go over anything.")
-        print("Lets try not to do whatever it was we did before. Onward!\n")
-        break
-    elif playerRemembers.lower() in ["no", "n"]:
-        print("\n         :Helpful Orb:")
-        print("I thought you mightn't. I'm The Orb of Helping.") 
-        print("You brought me to this danger filled labyrinth,")
-        print("to help you find an ancient relic.")
-        print("We set off a booby-trap,")
-        print("which appears to have given you mild magical amnesia.")
-        print("We are lost, currently escaping, and now you're all caught up.")
-        print("Let's go!\n")
-        break
-    elif playerRemembers.lower() in ["i", "inventory"]:
-        inventory(player)
-    else:
-        print("\n         :Helpful Orb:")
-        print("Oh he's gone mad... I was worried this would happen.")
-        print("I'll speak slower.")
+deathMemoryFunc()
 
-print("\n         :YOU PROCEED:")
+print("     -You proceed into the labyrinth-")
 print("There is a fork in the tunnel ahead.")
 print("The right path has a rune on the wall.")
 print("The left path has fresher smelling air.")
 
-while True:
-    print("\nDo you choose to go left or right? (L/R) ")
-    forkOne = input("> ")
-    if forkOne.lower() in ["left", "l"]:
-        print("UNKNOWN")
-        break
-    elif forkOne.lower() in ["right", "r"]:
-        print("\nAs you cross the threshold of the right tunnel")
-        print("you feel invigorated, the rune on the wall glows briefly.")
-        rune(player)
-        break
-    elif memoryOfName.lower() in ["i", "inventory"]:
-        inventory(player)
-    else:
-        print("We need to pick a tunnel, not stand here nattering.")
+firstChoiceFunc()
 
 # Chapter 2A - Right Fork - Mopey Goblin Encounter
 
 print("You travel down the gloomey tunnels")
 print("Light comes only from the Helpful Orb")
 print("You round a corner to find a bench up ahead hewn into the rock wall")
-print("Sat on the bench is a goblin, his head is downcast, crying")
+print("Sat on the bench is a goblin, his head is downcast, he looks sad.")
 print("He hasn't noticed you yet") 
 print("A wicked looking axe in his hand is drenched in blood, it drips.\n")
 
@@ -187,21 +274,22 @@ while True:
     print("4- Take off your clothes and run at him")
     print('Enter the number of your choice')
     mopeyGoblinEncounter = input("> ")
-    if mopeyGoblinEncounter.str.lower() in ["1", "one"]:
-        print("\nYou call to him.")
+    if mopeyGoblinEncounter.lower() in ["1", "one"]:
+        print(f"\n           :{player.name}:")
         print('"Are you alright friend?"')
         print("\n         :Mopey Goblin:")
-        print("Other Goblins soaked mi' axe in pigs blood, it's disgusting.")
-        print("Just had a rubbish day really, I'm alright.")
+        print("Other Gobbos soaked my axe in pigs blood, it's ruined.")
+        print("Just having a rubbish day, I'm alright.")
         print("Thanks for asking. Do you need something?")
+        goblinsQuestionFunc()
         break
-    elif mopeyGoblinEncounter.str.lower() in ["2", "two"]:
+    elif mopeyGoblinEncounter.lower() in ["2", "two"]:
         print("\n")
         break
-    elif mopeyGoblinEncounter.str.lower() in ["3", "three"]:
+    elif mopeyGoblinEncounter.lower() in ["3", "three"]:
         print("\n")
         break
-    elif mopeyGoblinEncounter.str.lower() in ["4", "four"]:
+    elif mopeyGoblinEncounter.lower() in ["4", "four"]:
         print("\n")
         break
     elif mopeyGoblinEncounter.lower() in ["i", "inventory"]:
