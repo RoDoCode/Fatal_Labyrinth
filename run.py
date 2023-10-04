@@ -19,9 +19,10 @@ data = characters.get_all_values()
 
 
 # CHARACTER BUILDING
-# This forms player and story character details and stats used in game mechanics
+# Forms player and story character details and stats used in game mechanics
 class Character:
-    def __init__(self, name, home, health, attack, defense, weapon, clothes, item1):
+    def __init__(self, name, home, health, attack, defense, weapon,
+                 clothes, item1, item2):
         self.name = name
         self.home = home
         self.health = health
@@ -30,35 +31,40 @@ class Character:
         self.weapon = weapon
         self.clothes = clothes
         self.item1 = item1
+        self.item2 = item2
 
 
 # All stats are taken from connected GoogleSheet for easy manipulation
 player = Character(data[1][1], data[1][2], data[1][3], data[1][4], data[1][5],
-                   data[1][6], data[1][7], data[1][8])
+                   data[1][6], data[1][7], data[1][8], data[1][9])
 
 helpfulOrb = Character(data[2][1], data[2][2], data[2][3], data[2][4],
-                       data[2][5], data[2][6], data[2][7], data[2][8])
+                       data[2][5], data[2][6], data[2][7], data[2][8], 
+                       data[2][9])
 
 mopeyGoblin = Character(data[3][1], data[3][2], data[3][3], data[3][4],
-                        data[3][5], data[3][6], data[3][7], data[3][8])
+                        data[3][5], data[3][6], data[3][7], data[3][8], 
+                        data[3][9])
 
 nakedWizard = Character(data[4][1], data[4][2], data[4][3], data[4][4],
-                        data[4][5], data[4][6], data[4][7], data[4][8])
+                        data[4][5], data[4][6], data[4][7], data[4][8], 
+                        data[4][9])
 
 hummusDemon = Character(data[5][1], data[5][2], data[5][3],
                         data[5][4], data[5][5], data[5][6], data[5][7],
-                        data[5][8])
+                        data[5][8], data[5][9])
 
 securityGuardLarry = Character(data[6][1], data[6][2], data[6][3],
                                data[6][4], data[6][5], data[6][6], data[6][7], 
-                               data[6][8])
+                               data[6][8], data[6][9])
 
 
 # MECHANICAL FUNCTIONS
 
 def inventory(Character):
     print(f'\nYou are armed with a {Character.weapon}, wearing ' +
-          f'{Character.clothes} and carrying a {Character.item1}.\n')
+          f'{Character.clothes} and carrying a {Character.item1}.' +
+          f'There is a {Character.item2} in your pocket.\n')
 
 
 def rune(Character):
@@ -173,13 +179,13 @@ def firstChoiceFunc():
         else:
             print("We need to pick a tunnel, not stand here nattering.")
 
+
 def goblinEncounterFunc():
     while True:
         print("Would you like to:")
         print("1- Ask if he is okay?")
         print("2- Sneak attack with your sword")
-        print("3- Hurl the Helpful Orb at him")
-        print("4- Take off your clothes and run at him")
+        print("3- Take off your clothes and run at him")
         print('Enter the number of your choice:')
         mopeyGoblinEncounter = input("> ")
         if mopeyGoblinEncounter.lower() in ["1", "one"]:
@@ -196,19 +202,17 @@ def goblinEncounterFunc():
             print("As you approach, the Helpful Orb gasps, realising your intention")
             print("The Goblin looks up at the sound and snarls at you.")
             print("He is lightning fast, the axes flashes sideways")
-            print("You parry but it knock you against the wall.")
-            print("he raises the axe above his head and brings it down on your sword arm.")
+            print("You parry but it knocks you against the wall.")
+            print("He raises the axe above his head and brings it down on your sword arm.")
             print("The limb drops to the floor and you go dizzy.")
             print("The Goblin stands back to admire his handy work.")
-            print("Then lazily swings the axeat you throat.")
-            print('"Youve cheered me right up" he growls')
+            print("Then lazily swings the axe at you throat.\n")
+            print("         :Mopey Goblin:")
+            print('Youve cheered me right up\n')
             print("YOU ARE DEAD - TRY AGAIN")
             print(f'{player.name} of {player.home} is no more.')
-            break
+            exit()
         elif mopeyGoblinEncounter.lower() in ["3", "three"]:
-            print("\n")
-            break
-        elif mopeyGoblinEncounter.lower() in ["4", "four"]:
             print("\n")
             break
         elif mopeyGoblinEncounter.lower() in ["i", "inventory"]:
@@ -217,15 +221,29 @@ def goblinEncounterFunc():
             print("\nOnly death lies behind")
             print("You must choose.")
 
+
 def goblinsQuestionFunc():
     while True:
         print('1- "Just looking for the way out mate?"')
-        print('2- "No, I am taking my orb for a walk. Hope your stuff all works out."')
-        print('3- "I will trade you this clean sword for that dirty axe if you like?"')
+        print('2- "No, I am taking my orb for a walk. Hope your stuff all' +
+              ' works out."')
+        print('3- "I will trade you this clean sword for that dirty axe if' +
+              ' you like?"')
         print('Enter the number of your choice')
         mopeyGoblinQuestion = input("> ")
         if mopeyGoblinQuestion.lower() in ["1", "one"]:
-            print("Oh just go back the way I came, take the second left after the screaming bulls head on the wall and head straight. Can't miss it")
+            print("Oh just go back the way I came, take the second left " +
+                  "after the screaming bulls head on the wall and head " +
+                  "straight. Can't miss it\n")
+            print("You hurry off down the corridor.")
+            print("As you pass a screaming bulls head. Cackles sound nearby")
+            print("The echoes make it impossible to find the source")
+            print("You sprint down the second corridor to the left")
+            print("Running headlong into a gang of vicous happy Goblins")
+            print("Before you can ask how they are feeling," +
+                  " a blow dart impacts your neck.")
+            print("You feel the poison burning. You have seconds to live.")
+            goblinDeathChoice()
         elif mopeyGoblinQuestion.lower() in ["2", "two"]:
             print("          :Mopey Goblin:")
             print("Lovely looking orb. Have a nice walk.\n")
@@ -234,8 +252,10 @@ def goblinsQuestionFunc():
             print("The axe bites into your back.")
             print("You fall to the floor. Your body goes numb.")
             print("This isn't how it was meant to end.")
-            print("The orb falls to the floor and the Mopey Goblin picks it up.")
-            print("He gives you a grin...and swings the axe up above his head.")
+            print("The orb falls to the floor and the Mopey Goblin " +
+                  "picks it up.")
+            print("He gives you a grin...and swings the axe up above" +
+                  " his head.")
             print("YOU ARE DEAD - TRY AGAIN")
             print(f'{player.name} of {player.home} is no more.')
             exit()
@@ -243,6 +263,38 @@ def goblinsQuestionFunc():
             print("hurray")
         else:
             print("The Mopey Goblin stares at you intently, waiting.")
+
+
+def goblinDeathChoice():
+    while True:
+        print("1- drink the potion in your pocket")
+        print("2- throw the Orb of Helping at the goblin gang")
+        print('Enter the number of your choice')
+        goblinDeathChoice = input("> ")
+        if goblinDeathChoice.lower() in ["1", "one"]:
+            print("Your hands tingle, they swell and begin to grow.")
+            print("You die with massive hands and goblins laughing" +
+                  " hysterically around you as your face goes purple.")
+            print("YOU ARE DEAD - TRY AGAIN")
+            print(f'{player.name} of {player.home} is no more.')
+            exit()
+        elif goblinDeathChoice.lower() in ["2", "two"]:
+            print("You hurl the screaming orb at the largest goblin")
+            print("Your only friend and source of light smashes and curses" +
+                  " your name")
+            print("You die in darkness as goblins cackle and crowd in")
+            print("YOU ARE DEAD - TRY AGAIN")
+            print(f'{player.name} of {player.home} is no more.')
+            exit()
+        else:
+            print(f'You shout "{goblinDeathChoice}", which means nothing to' +
+                  ' anyone but you.')
+            print("The poison dart works quickly")
+            print("You die in the tunnels. The Helpful Orb weeps for you.")
+            print("YOU ARE DEAD - TRY AGAIN")
+            print(f'{player.name} of {player.home} is no more.')
+            exit()
+
 
 # GAME START
 
@@ -292,15 +344,7 @@ print("     -You proceed into the labyrinth-")
                           3a That would be really great. Here you go, it's a brilliant axe once you've cleaned it. 
                             Thank you. I wouldn't hang about, the others arent keen on humans. You seem like one of
                             the good ones though
-                              1a - You hurry off down the corridor as you pass the screaming bulls head. You 
-                              hear the sound of cackling from somewhere in the tunnels, the echoey accoustics make it 
-                              impossible to tell where it's coming from. You feel fear emmanating from the Orb. You 
-                              sprint down the second corridor left after the Bull and run headlong into a gang of vicous 
-                              and upbeat Goblins. Before you can ask how they are feeling, a blow dart impacts your neck. 
-                              You feel the poison burning. You have seconds to live. 
-                                - drink potion - your hands tingle, they swell and begin to grow. You die with massive hands and goblins laughing hysterically around you
-                                - throw the orb - your only source of light smashes and curses your name, you die in darkness and goblins cackle
-                                - 
+                              
                                 - 
 
 """
