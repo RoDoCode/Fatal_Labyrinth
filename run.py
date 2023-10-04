@@ -213,8 +213,19 @@ def goblinEncounterFunc():
             print(f'{player.name} of {player.home} is no more.')
             exit()
         elif mopeyGoblinEncounter.lower() in ["3", "three"]:
-            print("\n")
-            break
+            print("\nYou decide upon shock and awe.")
+            print('"Bold!" you think as you strip down in the dark tunnel.')
+            print('"Come out swinging" you say to yourself.')
+            print("The Goblin was not expecting a nude being here.")
+            print("Your flailing arms and screaming is disconcerting.")
+            print("However the hallway is long and his reflexes are honed.")
+            print("He hurls the axe at your unarmoured chest.")
+            print("You catch the axe dead center mass.")
+            print("This is a quick death.")
+            print("What were you expecting would happen?")
+            print("\nYOU ARE DEAD - TRY AGAIN")
+            print(f'{player.name} of {player.home} is no more.')
+            exit()
         elif mopeyGoblinEncounter.lower() in ["i", "inventory"]:
             inventory(player)
         else:
