@@ -192,7 +192,18 @@ def goblinEncounterFunc():
             goblinsQuestionFunc()
             break
         elif mopeyGoblinEncounter.lower() in ["2", "two"]:
-            print("\n")
+            print("\nYou draw your sword and creep towards the creature.")
+            print("As you approach, the Helpful Orb gasps, realising your intention")
+            print("The Goblin looks up at the sound and snarls at you.")
+            print("He is lightning fast, the axes flashes sideways")
+            print("You parry but it knock you against the wall.")
+            print("he raises the axe above his head and brings it down on your sword arm.")
+            print("The limb drops to the floor and you go dizzy.")
+            print("The Goblin stands back to admire his handy work.")
+            print("Then lazily swings the axeat you throat.")
+            print('"Youve cheered me right up" he growls')
+            print("YOU ARE DEAD - TRY AGAIN")
+            print(f'{player.name} of {player.home} is no more.')
             break
         elif mopeyGoblinEncounter.lower() in ["3", "three"]:
             print("\n")
@@ -266,37 +277,10 @@ print("Sat on the bench is a goblin, his head is downcast, he looks sad.")
 print("He hasn't noticed you yet") 
 print("A wicked looking axe in his hand is drenched in blood, it drips.\n")
 
-while True:
-    print("Would you like to:")
-    print("1- Ask if he is okay?")
-    print("2- Sneak attack with your sword")
-    print("3- Hurl the Helpful Orb at him")
-    print("4- Take off your clothes and run at him")
-    print('Enter the number of your choice')
-    mopeyGoblinEncounter = input("> ")
-    if mopeyGoblinEncounter.lower() in ["1", "one"]:
-        print(f"\n           :{player.name}:")
-        print('"Are you alright friend?"')
-        print("\n         :Mopey Goblin:")
-        print("Other Gobbos soaked my axe in pigs blood, it's ruined.")
-        print("Just having a rubbish day, I'm alright.")
-        print("Thanks for asking. Do you need something?")
-        goblinsQuestionFunc()
-        break
-    elif mopeyGoblinEncounter.lower() in ["2", "two"]:
-        print("\n")
-        break
-    elif mopeyGoblinEncounter.lower() in ["3", "three"]:
-        print("\n")
-        break
-    elif mopeyGoblinEncounter.lower() in ["4", "four"]:
-        print("\n")
-        break
-    elif mopeyGoblinEncounter.lower() in ["i", "inventory"]:
-        inventory(player)
-    else:
-        print("\nOnly death lies behind")
-        print("You must choose.")
+goblinEncounterFunc()
+
+print("     -You proceed into the labyrinth-")
+
         
 """
         1a Just looking for the way out? - Mopey_Goblin gives bad advice
