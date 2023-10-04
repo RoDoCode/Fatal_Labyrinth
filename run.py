@@ -64,7 +64,7 @@ securityGuardLarry = Character(data[6][1], data[6][2], data[6][3],
 def inventory(Character):
     print(f'\nYou are armed with a {Character.weapon}, wearing ' +
           f'{Character.clothes} and carrying a {Character.item1}.' +
-          f'There is a {Character.item2} in your pocket.\n')
+          f' There is a {Character.item2} in your pocket.\n')
 
 
 def rune(Character):
@@ -101,7 +101,7 @@ def introFunc():
                 print("You look like a Bob!")
                 print("We are going to get on great Bob.")
                 print("I love that name. Bob, Bob, Bob. I could say it all day.")
-            print(f'Well {player.name}, where are you from?')
+            print(f'\n{player.name}. Okay {player.name}, where are you from?')
             player.home = input(">")
             break
         elif memoryOfName.lower() in ["no", "n"]:
@@ -166,7 +166,7 @@ def firstChoiceFunc():
                   "from your lungs.")
             print("You gasp for your last breath in the darkness of the " +
                   "labyrinth")
-            print("YOU ARE DEAD - TRY AGAIN")
+            print("\nYOU ARE DEAD - TRY AGAIN")
             print(f'{player.name} of {player.home} is no more.')
             exit()
         elif forkOne.lower() in ["right", "r"]:
@@ -339,7 +339,7 @@ print("Hello again")
 
 introFunc()
 
-print(f'Well {player.name} this whole situation may seem a little \
+print(f'\nWell {player.name} this whole situation may seem a little \
 disconcerting at first.')
 
 deathMemoryFunc()
