@@ -235,7 +235,7 @@ def goblinEncounterFunc():
 
 def goblinsQuestionFunc():
     while True:
-        print('1- "Just looking for the way out mate?"')
+        print('\n1- "Just looking for the way out mate?"')
         print('2- "No, I am taking my orb for a walk. Hope your stuff all' +
               ' works out."')
         print('3- "I will trade you this clean sword for that dirty axe if' +
@@ -243,6 +243,7 @@ def goblinsQuestionFunc():
         print('Enter the number of your choice')
         mopeyGoblinQuestion = input("> ")
         if mopeyGoblinQuestion.lower() in ["1", "one"]:
+            print("\n            :Mopey Goblin:")
             print("Oh just go back the way I came, take the second left " +
                   "after the screaming bulls head on the wall and head " +
                   "straight. Can't miss it\n")
@@ -267,7 +268,7 @@ def goblinsQuestionFunc():
                   "picks it up.")
             print("He gives you a grin...and swings the axe up above" +
                   " his head.")
-            print("YOU ARE DEAD - TRY AGAIN")
+            print("\nYOU ARE DEAD - TRY AGAIN")
             print(f'{player.name} of {player.home} is no more.')
             exit()
         elif mopeyGoblinQuestion.lower() in ["3", "three"]:
@@ -278,23 +279,25 @@ def goblinsQuestionFunc():
 
 def goblinDeathChoice():
     while True:
-        print("1- drink the potion in your pocket")
+        print("\n1- drink the potion in your pocket")
         print("2- throw the Orb of Helping at the goblin gang")
         print('Enter the number of your choice')
         goblinDeathChoice = input("> ")
         if goblinDeathChoice.lower() in ["1", "one"]:
+
+            print("\nYou scrabble for the vial in your pocket and gulp the elixir")
             print("Your hands tingle, they swell and begin to grow.")
             print("You die with massive hands and goblins laughing" +
                   " hysterically around you as your face goes purple.")
-            print("YOU ARE DEAD - TRY AGAIN")
+            print("\nYOU ARE DEAD - TRY AGAIN")
             print(f'{player.name} of {player.home} is no more.')
             exit()
         elif goblinDeathChoice.lower() in ["2", "two"]:
-            print("You hurl the screaming orb at the largest goblin")
+            print("\nYou hurl the screaming orb at the largest goblin")
             print("Your only friend and source of light smashes and curses" +
                   " your name")
             print("You die in darkness as goblins cackle and crowd in")
-            print("YOU ARE DEAD - TRY AGAIN")
+            print("\nYOU ARE DEAD - TRY AGAIN")
             print(f'{player.name} of {player.home} is no more.')
             exit()
         else:
