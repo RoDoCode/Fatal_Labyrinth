@@ -74,8 +74,15 @@ def inventory(Character):
           f' There is a {Character.item2} in your pocket.\n')
 
 
+def windsTear(Character):
+    Character.defense = ((int(Character.defense)) * 3)
+    print("\nThe tear instantly melts in your palm. You tingle.")
+    print("There is a fine layer of wind blowing just over the surface of your whole body.")
+    print("You feel better protected somehow.\n")
+
+
 def rune(Character):
-    player.attack = ((int(Character.attack)) * 2)
+    Character.attack = ((int(Character.attack)) * 2)
 
 
 def exchangeWeapons(player, mopey_goblin):
@@ -92,15 +99,16 @@ def noClothes(player):
 
 # NARRATIVE FUNCTIONS
 
-def openingParagraph():
+def gameStart():
     print("\nYou wake to find yourself in a dark stone corridor, the floor is sand.")
     print("The air is musty, in your hand a glowing sphere throbs gently.")
     print("The Orb pulses and a voice emanates from inside.\n")
-    print("         :Helpful Orb:")
-    print("Hello again")
+    introOne()
 
 
 def introOne():
+    print("         :Helpful Orb:")
+    print("Hello!")
     while True:
         print("Do you remember your name? (yes/no)")
         print('Enter "I" at anytime to check your inventory.')
@@ -167,6 +175,9 @@ def readyOne():
 
 
 def introTwo():
+    print("\nYou wake to find yourself in a dark stone corridor again, the floor still is sand.")
+    print("The air is just as musty as last time, in your hand the glowing sphere throbs gently.")
+    print("The Orb pulses and a speaks.")
     print("\n         :Helpful Orb:")
     print(f'Hi again {player.name}. Even I remember what just happened.')
     print("Or at least did...will...has happened. Doesn't matter.")
@@ -259,7 +270,7 @@ def airElementalEncounter():
                 print("The blowing sands cease and fall to the ground.")
                 print("The Air Elemental has met its end at the tip of your blade.")
                 print("A tear drop of steaming dry ice lays on the ground.")
-                windsTear()
+                windsTear(player)
                 nakedWizard()
             else: 
                 print("It is not enough.")
@@ -422,19 +433,12 @@ print("\_| \__,_|\__\__,_|_| \_____/\__,_|_.__/ \__, |_|  |_|_| |_|\__|_| |_|")
 print("                                          __/ |                       ")
 print("                                         |___/                        ")  
 
-print(player.attack + player.attack)
-openingParagraph()
 
-introOne()
+gameStart()
 
-deathMemory()
 
-print("     -You proceed into the labyrinth-")
-print("There is a fork in the tunnel ahead.")
-print("The right path has a rune on the wall.")
-print("The left path has fresher smelling air.")
 
-firstChoiceFunc()
+
 
 # Chapter 2A - Right Fork - Mopey Goblin Encounter
 
