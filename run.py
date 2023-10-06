@@ -58,6 +58,10 @@ securityGuardLarry = Character(data[6][1], data[6][2], data[6][3],
                                data[6][4], data[6][5], data[6][6], data[6][7], 
                                data[6][8], data[6][9])
 
+airElemental = Character(data[7][1], data[7][2], data[7][3],
+                         data[7][4], data[7][5], data[7][6], data[7][7], 
+                         data[7][8], data[7][9])
+
 
 # MECHANICAL FUNCTIONS
 
@@ -225,21 +229,46 @@ def firstChoice():
 
 
 def airElemental():
-    print("     -You proceed left further into the Labyrinth-")
+    print("     -You proceed further into the Labyrinth-")
     print("There is a rushing sound of wind ahead.")
     print("You turn a corner to find an Air Elemental facing you.")
-    player.health = player.health - (player.defense - elemental.attack)
-    if (player.health > 0):
-        print("You survive")
+    print("Grains of sand from the floor swirling across the surface of a humanoid shape.")
+    print("The being of pure wind blows towards you.")
+    enemyAttack = airElemental.attack
+    enemyHealth = airElemental.health
+    if (enemyAttack > player.defense):
+        attackRemainder = enemyAttack - player.defense
+        player.health = player.health - enemyAttack
+        if (player.health <= 0):
+            print("The orb is knocked from your hand, you hear a smash" + 
+                  " and the hall goes dark")
+            print("You are pressed against the wall as the air is forced " +
+                  "from your lungs.")
+            print("You gasp for your last breath in the darkness of the " +
+                  "labyrinth")
+            dead()
+        else:
+            print("You raise your sword and gulp a breath of air.")
+            print("You feel the wind buffeting your face and eroding your skin.")
+            print("But you landed a blow!")
+            enemyHealth = enemyHealth - player.attack
+            if (enemyHealth <= 0):
+                print("The blowing sands cease and fall to the ground.")
+                print("The Air Elemental has met its end at the tip of your blade.")
+                print("A tear drop of steaming dry ice lays on the ground.")
+                windsTear()
+                nakedWizard()
+            else: 
+                print("It is not enough.")
+                print("The sands amongst the wind are unceasing.")
+                print("Like the mountains at the edge of a desert.")
+                print("You erode until there is nothing left but dust.")
+                dead()
     else:
-        print("The being of pure wind gusts towards you.")
-        print("The orb is knocked from your hand, you hear a smash" + 
-              " and the hall goes dark")
-        print("You are pressed against the wall as the air is forced " +
-              "from your lungs.")
-        print("You gasp for your last breath in the darkness of the " +
-              "labyrinth")
-        dead()
+        print("You shrug off the feeble wind and push past it.")
+        print("You are on a quest and nothing shall stop you.")
+        print("The Air Elemental is embarrassed and hurries away down the tunnels.")
+        nakedWizard()
 
 
 def goblinEncounterFunc():
@@ -390,6 +419,7 @@ print("\_| \__,_|\__\__,_|_| \_____/\__,_|_.__/ \__, |_|  |_|_| |_|\__|_| |_|")
 print("                                          __/ |                       ")
 print("                                         |___/                        ")  
 
+print(airElemental.attack + airElemental.attack)
 openingParagraph()
 
 introOne()
