@@ -62,6 +62,9 @@ airElemental = Character(data[7][1], data[7][2], data[7][3],
                          data[7][4], data[7][5], data[7][6], data[7][7], 
                          data[7][8], data[7][9])
 
+player.health = int(player.health)
+player.defense = int(player.defense)
+player.attack = int(player.attack)
 
 # MECHANICAL FUNCTIONS
 
@@ -134,13 +137,13 @@ def dead():
     print("\nYOU ARE DEAD")
     print(f'{player.name} of {player.home} is no more.')
     while True:
-        print("Would you like to try again? (yes/no")
+        print("Would you like to try again? (yes/no)")
         tryAgain = input("> ")
         if tryAgain.lower() in ["yes", "y"]:
             introTwo()
             break
         elif tryAgain.lower() in ["no", "n"]:
-            print(f'Goodbye {player.name}')
+            print(f'Goodbye {player.name}, the Labyrinth is not for the faint of heart.')
             exit()
         elif playerRemembers.lower() in ["i", "inventory"]:
             print("You're dead. You don't have possessions.")
@@ -150,7 +153,7 @@ def dead():
 
 def readyOne():
     while True:
-        print("\nAre you ready? (yes/no")
+        print("\nAre you ready? (yes/no)")
         readyOne = input("> ")
         if readyOne.lower() in ["yes", "y"]:
             firstChoice()
@@ -215,7 +218,7 @@ def firstChoice():
         print("\nDo you choose to go left or right? (L/R) ")
         firstChoice = input("> ")
         if firstChoice.lower() in ["left", "l"]:
-            airElemental()
+            airElementalEncounter()
             break
         elif firstChoice.lower() in ["right", "r"]:
             print("\nAs you cross the threshold of the right tunnel")
@@ -228,14 +231,14 @@ def firstChoice():
             print("We need to pick a tunnel, not stand here nattering.")
 
 
-def airElemental():
+def airElementalEncounter():
     print("     -You proceed further into the Labyrinth-")
     print("There is a rushing sound of wind ahead.")
-    print("You turn a corner to find an Air Elemental facing you.")
+    print("You turn a corner to find a being of pure wind facing you.")
     print("Grains of sand from the floor swirling across the surface of a humanoid shape.")
-    print("The being of pure wind blows towards you.")
-    enemyAttack = airElemental.attack
-    enemyHealth = airElemental.health
+    print("The Air Elemental gusts towards you.")
+    enemyAttack = int(airElemental.attack)
+    enemyHealth = int(airElemental.health)
     if (enemyAttack > player.defense):
         attackRemainder = enemyAttack - player.defense
         player.health = player.health - enemyAttack
@@ -245,7 +248,7 @@ def airElemental():
             print("You are pressed against the wall as the air is forced " +
                   "from your lungs.")
             print("You gasp for your last breath in the darkness of the " +
-                  "labyrinth")
+                  "labyrinth.")
             dead()
         else:
             print("You raise your sword and gulp a breath of air.")
@@ -419,7 +422,7 @@ print("\_| \__,_|\__\__,_|_| \_____/\__,_|_.__/ \__, |_|  |_|_| |_|\__|_| |_|")
 print("                                          __/ |                       ")
 print("                                         |___/                        ")  
 
-print(airElemental.attack + airElemental.attack)
+print(player.attack + player.attack)
 openingParagraph()
 
 introOne()
