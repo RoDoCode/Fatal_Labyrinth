@@ -6,6 +6,7 @@ Users can try to find their way through the labyrinth while avoiding the gruesom
 
 [Here is the live version of my project - enter at your peril](https://fatal-labyrinth-c541af595fbe.herokuapp.com/)
 
+# Fatal Labyrinth - Text Adventure
 
 ## How to play
 
@@ -15,7 +16,7 @@ Users can try to find their way through the labyrinth while avoiding the gruesom
 - In the narrative world of Fatal Labyrinth unfortunetly death is an everyday occurence so the likelihood that your character survives to escape is extremely low, there may only be one correct route for you to leave with your life. So the game is designed to be played repeatedly in quick succession, the player learns form their mistakes and tries again. 
 - Intro non-player characters can be told that you remember what happened moments before so they don't repeat the same information to you. It is assumed that the Ladyrinth has magically revived you at this previous point in time before your death so that you can repeat the torture of the Labyrinth again and again. 
 
-## Features
+# Features
 
 Character Stats
 - Each character has stats which dictate how interactions play out.
@@ -48,7 +49,7 @@ Responses
 - More responses and options to dialogue.
 - Information and secrets system. If you learn certain pieces of information it can unlock new responses further down the line
 
-## Data Model
+# Data Model
 
 I decided to use the Character class as my model. Each character, both the player and the computer controlled non-player characters are instances of the Character class. Their attribute values are supplied from a google sheet so that they were easier to control and edit game dynamics as the project developed. 
 
@@ -63,9 +64,9 @@ I have manually tested this project by doing the
 -  I have tested every available choice with both variations of how a player may choose to write the answer in numbers or letters. 
 - Test in my local terminal and the Code Institute Heroku terminal.
 
-## Bugs
+# Bugs
 
-# Solved Bugs
+## Solved Bugs
 
 - There was an error while opening the relevant workspace on CodeAnywhere which left the workspace permanently in a state of "starting". So it could not be closed or opened. I created a new workspace, however this did not contain the updated GitIgnore file. When I pushed to GitHub the creds.json file was pushed to the public platform. This is not acceptable. I updated the GitIgnore file but creds.json remained in the commit history. After much research I discovered the "git reset --hard ~Head" command. Which steps back a commit and deletes the previous commit from the history once a force push is made. This cleared any sensitive data from GitHub and solved the issue
 
