@@ -110,14 +110,14 @@ def introOne():
                 print("I love that name. Bob, Bob, Bob. I could say it all day.")
             print(f'\n{player.name}. Okay {player.name}, where are you from?')
             player.home = input(">")
-            deathMemoryFunc()
+            deathMemory()
             break
         elif memoryOfName.lower() in ["no", "n"]:
             print("\n         :Helpful Orb:")
             print(f"Okay, no stress. It's ummmm... {player.name}! Your name " +
                   f"is {player.name}. Yes.")
             print(f"And in case you're wondering you are from...{player.home}")
-            deathMemoryFunc()
+            deathMemory()
             break
         elif memoryOfName.lower() in ["i", "inventory"]:
             inventory(player)
@@ -146,7 +146,7 @@ def dead():
 
 def readyOne():
     while True:
-        print("Are you ready? (yes/no")
+        print("\nAre you ready? (yes/no")
         readyOne = input("> ")
         if readyOne.lower() in ["yes", "y"]:
             firstChoice()
@@ -229,15 +229,17 @@ def airElemental():
     print("There is a rushing sound of wind ahead.")
     print("You turn a corner to find an Air Elemental facing you.")
     player.health = player.health - (player.defense - elemental.attack)
-    if 
-    print("The being of pure wind gusts towards you.")
-    print("The orb is knocked from your hand, you hear a smash" + 
-          " and the hall goes dark")
-    print("You are pressed against the wall as the air is forced " +
-          "from your lungs.")
-    print("You gasp for your last breath in the darkness of the " +
-          "labyrinth")
-    dead()
+    if (player.health > 0):
+        print("You survive")
+    else:
+        print("The being of pure wind gusts towards you.")
+        print("The orb is knocked from your hand, you hear a smash" + 
+              " and the hall goes dark")
+        print("You are pressed against the wall as the air is forced " +
+              "from your lungs.")
+        print("You gasp for your last breath in the darkness of the " +
+              "labyrinth")
+        dead()
 
 
 def goblinEncounterFunc():
