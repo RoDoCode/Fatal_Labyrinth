@@ -82,7 +82,7 @@ def windsTear(Character):
 
 
 def rune(Character):
-    Character.attack = ((int(Character.attack)) * 2)
+    Character.health = (Character.health) * 2)
 
 
 def exchangeWeapons(player, mopey_goblin):
@@ -307,7 +307,7 @@ def goblinEncounterFunc():
             print("As you approach, the Helpful Orb gasps, realising your intention")
             print("The Goblin looks up at the sound and snarls at you.")
             print("He is lightning fast, the axe flashes sideways")
-            print("You parry but it knocks you against the wall.")
+            print("You parry but the blow knocks you against the wall.")
             print("He raises the axe above his head and brings it down on your sword arm.")
             print("The limb drops to the floor and you go dizzy.")
             print("The Goblin stands back to admire his handy work.")
@@ -322,12 +322,12 @@ def goblinEncounterFunc():
             print('"Bold!" you think as you strip down in the dark tunnel.')
             print('"Come out swinging" you say to yourself.')
             print("The Goblin was not expecting a nude being here.")
-            print("Your flailing arms and screaming is disconcerting.")
-            print("However the hallway is long and his reflexes are honed.")
+            print("Your flailing arms and screaming is off putting.")
+            print("However the hallway is long and he's holding an axe.")
             print("He hurls the axe at your unarmoured chest.")
             print("You catch the axe dead center mass.")
             print("This is a quick death.")
-            print("What were you expecting would happen?")
+            print("What were you expecting?")
             print("\nYOU ARE DEAD - TRY AGAIN")
             print(f'{player.name} of {player.home} is no more.')
             exit()
@@ -417,7 +417,7 @@ def goblinDeathChoice():
 
 # GAME START
 
-# Chapter 1 - Intro
+
 print("__   __                             _         _   _                   ")
 print("\ \ / /                            (_)       | | | |                  ")
 print(" \ V /___  _   _    __ _ _ __ ___   _ _ __   | |_| |__   ___          ")
