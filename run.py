@@ -113,7 +113,7 @@ def combat(Character1):
 
 
 # NARRATIVE FUNCTIONS
-
+# player stats H50 A25 D25
 def gameStart():
     print("\nYou wake to find yourself in a dark stone corridor, the floor is sand.")
     print("The air is musty, in your hand a glowing sphere throbs gently.")
@@ -159,13 +159,13 @@ def introOne():
 def dead():
     print("\nYOU ARE DEAD")
     print(f'{player.name} from {player.home} is no more.')
-    player.health = data[1][3]
-    player.attack = data[1][4]
-    player.defense = data[1][5]
-    player.weapon = data[1][6]
-    player.clothes = data[1][7]
-    player.item1 = data[1][8]
-    player.item2 = data[1][9]
+    player.health = int(data[1][3])
+    player.attack = int(data[1][4])
+    player.defense = int(data[1][5])
+    player.weapon = int(data[1][6])
+    player.clothes = int(data[1][7])
+    player.item1 = int(data[1][8])
+    player.item2 = int(data[1][9])
     while True:
         print("\nWould you like to try again? (yes/no)")
         tryAgain = input("> ")
@@ -251,12 +251,28 @@ def firstChoice():
         print("\nDo you choose to go left or right? (L/R) ")
         firstChoice = input("> ")
         if firstChoice.lower() in ["left", "l"]:
+            ("\nYou've decided to take the left tunnel.")
             airElementalEncounter()
             break
         elif firstChoice.lower() in ["right", "r"]:
-            print("\nYou cross the threshold of the right tunnel")
-            print("You feel invigorated as the rune on the wall glows briefly.")
-            rune(player)
+            print("\nYou've decided to take the right tunnel.")
+            while True:
+                print("\nWill you duck under the rune on the wall? (yes/no)")
+                duckRune = input("> ")
+                if duckRune.lower() in ["no", "n"]:
+                    print("\nYou cross the threshold of the right tunnel")
+                    print("You feel invigorated as the rune on the wall glows briefly.")
+                    rune(player)
+                    # player stats H100 A25 D25
+                    goblinEncounterFunc()
+                    break
+                elif duckRune.lower() in ["yes", "y"]:
+                    print("You duck beneath the rune cautiously.")
+                    # player stats H50 A25 D25
+                    goblinEncounterFunc()
+                    break
+                else:
+                    print("There's no turning back now.")
             break
         elif firstChoice.lower() in ["i", "inventory"]:
             inventory(player)
@@ -265,7 +281,8 @@ def firstChoice():
 
 
 def airElementalEncounter():
-    print("     -You proceed further into the Labyrinth-")
+    # Air Elemental Stats H25 A75
+    print("\n     -You proceed further into the Labyrinth-")
     print("There is a rushing sound of wind ahead.")
     print("You turn a corner to find a being of pure air facing you.")
     print("Grains of sand from the floor swirling across the surface of a humanoid shape.")
@@ -294,6 +311,13 @@ def airElementalEncounter():
 
 
 def goblinEncounterFunc():
+    #Mopey Goblin stats H20 A100
+    print("\n     -You proceed further into the Labyrinth-")
+    print("Light comes only from the Helpful Orb")
+    print("You round a corner to find a bench up ahead hewn into the rock wall")
+    print("Sat on the bench is a goblin, his head is downcast, he looks sad.")
+    print("He hasn't noticed you yet") 
+    print("A wicked looking axe in his hand is drenched in blood, it drips.\n")
     while True:
         print("Would you like to:")
         print("1- Ask if he is okay?")
@@ -329,9 +353,9 @@ def goblinEncounterFunc():
             elif goblinFight == "dead":
                 print("The goblin hears the intake of breath.")
                 print("He lurches towards you.")
-                print("You swing to strike but he powerslides under neath the blow")
+                print("You swing to strike but he powerslides underneath the blow")
                 print("You feel the weight of the axe embbed itself in your spine.")
-                print("Nice try.")
+                print("A brave attempt.")
                 dead()
             else:
                 print("He spots you approaching and rushes to engage.")
