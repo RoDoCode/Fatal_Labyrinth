@@ -85,11 +85,9 @@ def rune(Character):
     Character.health = (Character.health) * 2
 
 
-def exchangeWeapons(player, mopey_goblin):
-    player.attack = 80
+def takeUpAxe():
+    player.attack = mopeyGoblin.attack
     player.weapon = "bloodied axe"
-    mopeyGoblin.attack = 25
-    mopeyGoblin.weapon = "shiny sword"
 
 
 def noClothes(player):
@@ -99,8 +97,8 @@ def noClothes(player):
 def combat(Character1):
     enemyAttack = int(Character1.attack)
     enemyHealth = int(Character1.health)
+    attackRemainder = enemyAttack - player.defense
     if (enemyAttack > player.defense):
-        attackRemainder = enemyAttack - player.defense
         player.health = player.health - attackRemainder
         if (player.health <= 0):
             return "dead"
@@ -161,6 +159,13 @@ def introOne():
 def dead():
     print("\nYOU ARE DEAD")
     print(f'{player.name} from {player.home} is no more.')
+    player.health = data[1][3]
+    player.attack = data[1][4]
+    player.defense = data[1][5]
+    player.weapon = data[1][6]
+    player.clothes = data[1][7]
+    player.item1 = data[1][8]
+    player.item2 = data[1][9]
     while True:
         print("\nWould you like to try again? (yes/no)")
         tryAgain = input("> ")
@@ -265,36 +270,23 @@ def airElementalEncounter():
     print("You turn a corner to find a being of pure air facing you.")
     print("Grains of sand from the floor swirling across the surface of a humanoid shape.")
     print("The Air Elemental gusts towards you.")
-    enemyAttack = int(airElemental.attack)
-    enemyHealth = int(airElemental.health)
-    if (enemyAttack > player.defense):
-        attackRemainder = enemyAttack - player.defense
-        player.health = player.health - enemyAttack
-        if (player.health <= 0):
-            print("The orb is knocked from your hand, you hear a smash" + 
-                  " and the hall goes dark")
-            print("You are pressed against the wall as the air is forced " +
-                  "from your lungs.")
-            print("You gasp for your last breath in the darkness of the " +
-                  "labyrinth.")
-            dead()
-        else:
-            print("You raise your sword and gulp a breath of air.")
-            print("You feel the wind buffeting your face and eroding your skin.")
-            print("But you landed a blow!")
-            enemyHealth = enemyHealth - player.attack
-            if (enemyHealth <= 0):
-                print("The blowing sands cease and fall to the ground.")
-                print("The Air Elemental has met its end at the tip of your blade.")
-                print("A tear drop of steaming dry ice lays on the ground.")
-                windsTear(player)
-                nakedWizard()
-            else: 
-                print("It is not enough.")
-                print("The sands amongst the wind are unceasing.")
-                print("Like the mountains at the edge of a desert.")
-                print("You erode until there is nothing left but dust.")
-                dead()
+    elementalFight = combat(airElemental)
+    if elementalFight == "dead":
+        print("The orb is knocked from your grasp, lighting you from below")
+        print("You are pressed against the wall and pinned in place.")
+        print("The sands amongst the wind are unceasing.")
+        print("Like the mountains at the edge of a windswept desert.")
+        print("You are eroded until there is nothing left but dust.")
+        dead()
+    elif elementalFight == "win":
+        print("You raise your sword and gulp a breath of air.")
+        print("You feel the wind buffeting your face and eroding your skin.")
+        print("But you landed a blow!")
+        print("The blowing sands cease and fall to the ground.")
+        print("The Air Elemental has met its end at the tip of your blade.")
+        print("A tear drop of steaming dry ice lays on the ground.")
+        windsTear(player)
+        nakedWizard()            
     else:
         print("You shrug off the feeble wind and push past it.")
         print("You are on a quest and nothing shall stop you.")
@@ -329,11 +321,26 @@ def goblinEncounterFunc():
                 print("The goblin tries to parry but the blow knocks him against the wall.")
                 print("He clumsily raises the axe above his head and you slash across his upraised arms.")
                 print("The limbs drops to the floor with the axe still gripped tightly.")
-                print("The Goblin steps back shocked.")
-                print("Then collapses backwards, defeated.\n")
+                print("The Goblin steps back; shocked.")
+                print("Then collapses, defeated.\n")
                 print("         :Mopey Goblin:")
                 print('What a rubbish day.\n')
+                print("The goblin lies still.")
+                lootGoblin()
+            elif goblinFight == "dead":
+                print("The goblin hears the intake of breath.")
+                print("He lurches towards you.")
+                print("You swing to strike but he powerslides under neath the blow")
+                print("You feel the weight of the axe embbed itself in your spine.")
+                print("Nice try.")
                 dead()
+            else:
+                print("He spots you approaching and rushes to engage.")
+                print("You take a blow from his axe to your shoulder.")
+                print("You shrug off the puny attempt at violence.")
+                print("The goblin squeal and clutches his cheast.")
+                print("He has died of fright")
+                lootGoblin()
         elif mopeyGoblinEncounter.lower() in ["3", "three"]:
             print("\nYou decide upon shock and awe.")
             print('"Bold!" you think as you strip down in the dark tunnel.')
@@ -351,6 +358,29 @@ def goblinEncounterFunc():
         else:
             print("\nOnly death lies behind")
             print("You must choose.")
+
+
+def lootGoblin():
+    while True:
+        print("\nWould you like to swap weapons for his axe? (yes/no)")
+        collectAxe = input("> ")
+        if collectAxe.lower() in ["yes", "y"]:
+            print("The bloody choppa will do great things with you.")
+            print(f'You drop the {player.weapon}, and take up the axe.')
+            takeUpAxe()
+            airElementalEncounter()
+            break
+        elif collectAxe.lower() in ["no", "n"]:
+            print("\nYou think better than to touch the axe.")
+            print("You hear laughing in the corridor ahead")
+            print("\n         :Helpful Orb:")
+            print("That doesn't sound good. Go back!\n")
+            airElementalEncounter()
+            break
+        elif collectAxe.lower() in ["i", "inventory"]:
+            inventory(player)
+        else:
+            print("\nThat doesn't answer the question.")
 
 
 def goblinsQuestionFunc():
