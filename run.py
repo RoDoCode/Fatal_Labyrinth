@@ -82,7 +82,7 @@ def windsTear(Character):
 
 
 def rune(Character):
-    Character.health = (Character.health) * 2)
+    Character.health = (Character.health) * 2
 
 
 def exchangeWeapons(player, mopey_goblin):
@@ -95,6 +95,23 @@ def exchangeWeapons(player, mopey_goblin):
 def noClothes(player):
     player.clothes = "nothing"
     player.defense = 0
+
+def combat(Character1):
+    enemyAttack = int(Character1.attack)
+    enemyHealth = int(Character1.health)
+    if (enemyAttack > player.defense):
+        attackRemainder = enemyAttack - player.defense
+        player.health = player.health - attackRemainder
+        if (player.health <= 0):
+            return "dead"
+        else:
+            enemyHealth = enemyHealth - player.attack
+            if enemyHealth <= 0:
+                return "win"
+            else:
+                combat(Character1)
+    else:
+        return "shrug"
 
 
 # NARRATIVE FUNCTIONS
@@ -143,18 +160,18 @@ def introOne():
 
 def dead():
     print("\nYOU ARE DEAD")
-    print(f'{player.name} of {player.home} is no more.')
+    print(f'{player.name} from {player.home} is no more.')
     while True:
-        print("Would you like to try again? (yes/no)")
+        print("\nWould you like to try again? (yes/no)")
         tryAgain = input("> ")
         if tryAgain.lower() in ["yes", "y"]:
             introTwo()
             break
         elif tryAgain.lower() in ["no", "n"]:
-            print(f'Goodbye {player.name}, the Labyrinth is not for the faint of heart.')
+            print(f'\nGoodbye {player.name}, the Labyrinth is not for the faint of heart.')
             exit()
-        elif playerRemembers.lower() in ["i", "inventory"]:
-            print("You're dead. You don't have possessions.")
+        elif tryAgain.lower() in ["i", "inventory"]:
+            print("\nYou're dead. You don't have possessions.")
         else:
             print("You must choose.")
 
@@ -167,7 +184,7 @@ def readyOne():
             firstChoice()
             break
         elif readyOne.lower() in ["no", "n"]:
-            print(f'{player.name}, we have to go at some point')
+            print(f'\n{player.name}, we have to go at some point')
         elif readyOne.lower() in ["i", "inventory"]:
             inventory(player)
         else:
@@ -175,9 +192,9 @@ def readyOne():
 
 
 def introTwo():
-    print("\nYou wake to find yourself in a dark stone corridor again, the floor still is sand.")
+    print("\nYou wake to find yourself in a dark stone corridor again, the floor is the same sand.")
     print("The air is just as musty as last time, in your hand the glowing sphere throbs gently.")
-    print("The Orb pulses and a speaks.")
+    print("The Orb pulses and speaks.")
     print("\n         :Helpful Orb:")
     print(f'Hi again {player.name}. Even I remember what just happened.')
     print("Or at least did...will...has happened. Doesn't matter.")
@@ -198,7 +215,7 @@ def deathMemory():
             print("You probably already died at least once then.")
             print("The Labyrinth seems to respawn you at this moment in time.")
             print("Oh well, at least I don't need to go over anything.")
-            print("Lets try not to do whatever it was we did before.\n")
+            print("Lets try not to do whatever it was we did before.")
             readyOne()
             break
         elif playerRemembers.lower() in ["no", "n"]:
@@ -232,8 +249,8 @@ def firstChoice():
             airElementalEncounter()
             break
         elif firstChoice.lower() in ["right", "r"]:
-            print("\nAs you cross the threshold of the right tunnel")
-            print("you feel invigorated, the rune on the wall glows briefly.")
+            print("\nYou cross the threshold of the right tunnel")
+            print("You feel invigorated as the rune on the wall glows briefly.")
             rune(player)
             break
         elif firstChoice.lower() in ["i", "inventory"]:
@@ -245,7 +262,7 @@ def firstChoice():
 def airElementalEncounter():
     print("     -You proceed further into the Labyrinth-")
     print("There is a rushing sound of wind ahead.")
-    print("You turn a corner to find a being of pure wind facing you.")
+    print("You turn a corner to find a being of pure air facing you.")
     print("Grains of sand from the floor swirling across the surface of a humanoid shape.")
     print("The Air Elemental gusts towards you.")
     enemyAttack = int(airElemental.attack)
@@ -297,14 +314,18 @@ def goblinEncounterFunc():
             print(f"\n           :{player.name}:")
             print('"Are you alright friend?"')
             print("\n         :Mopey Goblin:")
-            print("Other Gobbos soaked my axe in pigs blood, it's ruined.")
-            print("Just having a rubbish day, I'm alright.")
-            print("Thanks for asking. Do you need something?")
+            print("Other Gobbos soaked my choppa in pigs blood, it's ruined.")
+            print("Just having a rubbish day, I is alright.")
+            print("Thanks for asking. Do you need something humie?")
             goblinsQuestionFunc()
             break
         elif mopeyGoblinEncounter.lower() in ["2", "two"]:
             print("\nYou draw your sword and creep towards the creature.")
-            print("As you approach, the Helpful Orb gasps, realising your intention")
+            print("As you approach, you hear the Helpful Orb hold it's breath.")
+            fight = combat(mopeyGoblin)
+            print(fight)
+            exit()
+
             print("The Goblin looks up at the sound and snarls at you.")
             print("He is lightning fast, the axe flashes sideways")
             print("You parry but the blow knocks you against the wall.")
@@ -314,23 +335,19 @@ def goblinEncounterFunc():
             print("Then lazily swings the axe at your throat.\n")
             print("         :Mopey Goblin:")
             print('Youve cheered me right up\n')
-            print("YOU ARE DEAD - TRY AGAIN")
-            print(f'{player.name} of {player.home} is no more.')
-            exit()
+            dead()
         elif mopeyGoblinEncounter.lower() in ["3", "three"]:
             print("\nYou decide upon shock and awe.")
             print('"Bold!" you think as you strip down in the dark tunnel.')
             print('"Come out swinging" you say to yourself.')
-            print("The Goblin was not expecting a nude being here.")
+            print("The Goblin is not expecting a nude human.")
             print("Your flailing arms and screaming is off putting.")
             print("However the hallway is long and he's holding an axe.")
             print("He hurls the axe at your unarmoured chest.")
             print("You catch the axe dead center mass.")
             print("This is a quick death.")
             print("What were you expecting?")
-            print("\nYOU ARE DEAD - TRY AGAIN")
-            print(f'{player.name} of {player.home} is no more.')
-            exit()
+            dead()
         elif mopeyGoblinEncounter.lower() in ["i", "inventory"]:
             inventory(player)
         else:
@@ -394,9 +411,7 @@ def goblinDeathChoice():
             print("Your hands tingle, they swell and begin to grow.")
             print("You die with massive hands and goblins laughing" +
                   " hysterically around you as your face goes purple.")
-            print("\nYOU ARE DEAD - TRY AGAIN")
-            print(f'{player.name} of {player.home} is no more.')
-            exit()
+            dead()
         elif goblinDeathChoice.lower() in ["2", "two"]:
             print("\nYou hurl the screaming orb at the largest goblin")
             print("Your only friend and source of light smashes and curses" +
