@@ -77,7 +77,7 @@ def inventory(Character):
 def windsTear(Character):
     Character.defense = ((int(Character.defense)) * 3)
     print("\nThe tear instantly melts in your palm. You tingle.")
-    print("There is a fine layer of wind blowing just over the surface of your whole body.")
+    print("There is a film of wind blowing over the surface of your body.")
     print("You feel better protected somehow.\n")
 
 
@@ -274,9 +274,8 @@ def airElementalEncounter():
     if elementalFight == "dead":
         print("The orb is knocked from your grasp, lighting you from below")
         print("You are pressed against the wall and pinned in place.")
-        print("The sands amongst the wind are unceasing.")
         print("Like the mountains at the edge of a windswept desert.")
-        print("You are eroded until there is nothing left but dust.")
+        print("You are sandblasted until there is nothing left but dust.")
         dead()
     elif elementalFight == "win":
         print("You raise your sword and gulp a breath of air.")
@@ -337,8 +336,8 @@ def goblinEncounterFunc():
             else:
                 print("He spots you approaching and rushes to engage.")
                 print("You take a blow from his axe to your shoulder.")
-                print("You shrug off the puny attempt at violence.")
-                print("The goblin squeal and clutches his cheast.")
+                print("You shrug off the puny attempt at violence and stare him down.")
+                print("The goblin squeals and clutches his cheast.")
                 print("He has died of fright")
                 lootGoblin()
         elif mopeyGoblinEncounter.lower() in ["3", "three"]:
@@ -365,9 +364,13 @@ def lootGoblin():
         print("\nWould you like to swap weapons for his axe? (yes/no)")
         collectAxe = input("> ")
         if collectAxe.lower() in ["yes", "y"]:
-            print("The bloody choppa will do great things with you.")
+            print("\nThe bloody choppa will do great things in your hands.")
             print(f'You drop the {player.weapon}, and take up the axe.')
             takeUpAxe()
+            print("You hear ominous laughing in the corridor ahead")
+            print("\n         :Helpful Orb:")
+            print("That doesn't sound good. Go back!\n")
+            print("You hurry back to the turn and take the left tunnel.")
             airElementalEncounter()
             break
         elif collectAxe.lower() in ["no", "n"]:
@@ -375,6 +378,7 @@ def lootGoblin():
             print("You hear laughing in the corridor ahead")
             print("\n         :Helpful Orb:")
             print("That doesn't sound good. Go back!\n")
+            print("You hurry back to the turn and take the left tunnel.")
             airElementalEncounter()
             break
         elif collectAxe.lower() in ["i", "inventory"]:
@@ -385,7 +389,7 @@ def lootGoblin():
 
 def goblinsQuestionFunc():
     while True:
-        print('\n1- "Just looking for the way out mate?"')
+        print('1- "Just looking for the way out mate?"')
         print('2- "No, I am taking my orb for a walk. Hope your stuff all' +
               ' works out."')
         print('3- "I will trade you this clean sword for that dirty axe if' +
@@ -393,21 +397,26 @@ def goblinsQuestionFunc():
         print('Enter the number of your choice')
         mopeyGoblinQuestion = input("> ")
         if mopeyGoblinQuestion.lower() in ["1", "one"]:
+            print(f"\n           :{player.name}:")
+            print("Just looking for the way out mate?")
             print("\n            :Mopey Goblin:")
-            print("Oh just go back the way I came, take the second left " +
+            print("Oh just carry on this way, take the second left " +
                   "after the screaming bulls head on the wall and head " +
                   "straight. Can't miss it\n")
             print("You hurry off down the corridor.")
             print("As you pass a screaming bulls head. Cackles sound nearby")
             print("The echoes make it impossible to find the source")
             print("You sprint down the second corridor to the left")
-            print("Running headlong into a gang of vicous happy Goblins")
+            print("Running headlong into a gang of chattering Goblins")
             print("Before you can ask how they are feeling," +
                   " a blow dart impacts your neck.")
             print("You feel the poison burning. You have seconds to live.")
             goblinDeathChoice()
         elif mopeyGoblinQuestion.lower() in ["2", "two"]:
-            print("          :Mopey Goblin:")
+            print(f"\n           :{player.name}:")
+            print("No, I am taking my orb for a walk. Hope your stuff all" +
+                  " works out.")
+            print("\n          :Mopey Goblin:")
             print("Lovely looking orb. Have a nice walk.\n")
             print("He begins to mop blood off the axe and ignores you.")
             print("As you stroll passed him you hear a flurry of motion")
@@ -418,10 +427,9 @@ def goblinsQuestionFunc():
                   "picks it up.")
             print("He gives you a grin...and swings the axe up above" +
                   " his head.")
-            print("\nYOU ARE DEAD - TRY AGAIN")
-            print(f'{player.name} of {player.home} is no more.')
-            exit()
+            dead()
         elif mopeyGoblinQuestion.lower() in ["3", "three"]:
+            takeUpAxe()
             print("hurray")
         else:
             print("The Mopey Goblin stares at you intently, waiting.")
@@ -434,7 +442,6 @@ def goblinDeathChoice():
         print('Enter the number of your choice')
         goblinDeathChoice = input("> ")
         if goblinDeathChoice.lower() in ["1", "one"]:
-
             print("\nYou scrabble for the vial in your pocket and gulp the elixir")
             print("Your hands tingle, they swell and begin to grow.")
             print("You die with massive hands and goblins laughing" +
@@ -445,17 +452,19 @@ def goblinDeathChoice():
             print("Your only friend and source of light smashes and curses" +
                   " your name")
             print("You die in darkness as goblins cackle and crowd in")
-            print("\nYOU ARE DEAD - TRY AGAIN")
-            print(f'{player.name} of {player.home} is no more.')
-            exit()
+            dead()
         else:
             print(f'You shout "{goblinDeathChoice}", which means nothing to' +
                   ' anyone but you.')
             print("The poison dart works quickly")
             print("You die in the tunnels. The Helpful Orb weeps for you.")
-            print("YOU ARE DEAD - TRY AGAIN")
-            print(f'{player.name} of {player.home} is no more.')
-            exit()
+            dead()
+
+
+def nakedWizard():
+    print("The exit can't be far now.")
+    print("Just this nake wizard to get past.")
+    exit()
 
 
 # GAME START
