@@ -593,9 +593,37 @@ def nakedWizardEncounter():
     print("\n         :Grand Wizard Methielteez:")
     print("It's hard at first, living in the labyrinth, " +
           "but you'll get used to it")
-    print("\n1-Shake his hand and compliment his hat " +
-          "while looking for an exit.")
-    print("2-")
+    print("\n1-Attack the Wizard!")
+    print("2-Offer to trade your potion with him for something of value")
+    print("3-Offer to give him your clothes as a gift")
+    while True:
+        wizardsChoice = input("> ")
+        if wizardsChoice.lower() in ["1", "one"]:
+            print("You get bad vibes from the naked wizard.")
+            print("Attack is the only option. He must be trying to trick you")
+            wizardFight = combat(nakedWizard)
+                if wizardFight == "win"
+                elif wizardFight == "dead"
+                    print(f"You rush the forgetful archanist, " +
+                          f"{player.weapon} in hand.")
+                    print("")
+                else:
+                    print("You both charge. Then draw back." +
+                          " No one will win this fight.")
+                    print("You nod at each other and he points to a tunnel")
+                    secretTunnel()
+            break
+        elif wizardsChoice.lower() in ["2", "two"]:
+            print()
+            break
+        elif wizardsChoice.lower() in ["3", "three"]:
+            print()
+            break
+        elif wizardsChoice.lower() in ["i", "inventory"]:
+            inventory(player)
+        else:
+            print("You blurt out a weird sound and" +
+                  " the wizard waits unsurprised.")
 
 
 # GAME START
