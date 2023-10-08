@@ -111,13 +111,13 @@ def combat(Character1):
     # combat function used for all encounters except instant death endings
     enemyAttack = int(Character1.attack)
     enemyHealth = int(Character1.health)
-    attackRemainder = enemyAttack - player.defense
-    if (enemyAttack > player.defense):
-        player.health = player.health - attackRemainder
+    attackRemainder = enemyAttack - int(player.defense)
+    if (enemyAttack > int(player.defense)):
+        player.health = int(player.health) - attackRemainder
         if (player.health <= 0):
             return "dead"
         else:
-            enemyHealth = enemyHealth - player.attack
+            enemyHealth = enemyHealth - int(player.attack)
             if enemyHealth <= 0:
                 return "win"
             else:
@@ -223,6 +223,42 @@ def readyOne():
             print("That doesn't mean anything to me.")
 
 
+def proceed():
+    while True:
+        print("\n         :Helpful Orb:")
+        print("Do you want to keep going? (yes/no)")
+        proceedOption = input("> ")
+        if proceedOption.lower() in ["yes", "y"]:
+            print("There's a brave hero. On we go!")
+            break
+        elif proceedOption.lower() in ["no", "n"]:
+            print("\n         :Helpful Orb:")
+            print("There isn't really much choice here.")
+            print("Only death lies behind. Freedom lies ahead.")
+        elif proceedOption.lower() in ["i", "inventory"]:
+            inventory(player)
+        else:
+            print("\n         :Helpful Orb:")
+            print("You just have to put one foot in front of the other.")
+
+
+def defendOrFreeze():
+    while True:
+        print("\nDo you fight? (yes/no)")
+        defendOrFreezeChoice = input("> ")
+        if defendOrFreezeChoice.lower() in ["yes", "y"]:
+            break
+        elif defendOrFreezeChoice.lower() in ["no", "n"]:
+            print("Your arms go weak, you freeze with fear.")
+            break
+        elif defendOrFreezeChoice.lower() in ["i", "inventory"]:
+            print("No time for that.")
+            break
+        else:
+            print("You aren't thinking clearly.")
+            break
+
+
 def introTwo():
     print("\nYou wake to find yourself in a dark stone corridor again," +
           " the floor is the same sand.")
@@ -319,9 +355,11 @@ def airElementalEncounter():
     print("Grains of sand from the floor swirling across the surface" +
           " of a humanoid shape.")
     print("The Air Elemental gusts towards you.")
+    defendOrFreeze()
     elementalFight = combat(airElemental)
     if elementalFight == "dead":
-        print("The orb is knocked from your grasp, lighting you from below")
+        print("The orb is knocked from your grasp, light streams" +
+              " up from below.")
         print("You are pressed against the wall and pinned in place.")
         print("Like the mountains at the edge of a windswept desert.")
         print("You are sandblasted until there is nothing left but dust.")
@@ -329,11 +367,12 @@ def airElementalEncounter():
     elif elementalFight == "win":
         print("You raise your sword and gulp a breath of air.")
         print("You feel the wind buffeting your face and eroding your skin.")
-        print("But you landed a blow!")
+        print("But you landed a hit!")
         print("The blowing sands cease and fall to the ground.")
         print("The Air Elemental has met its end at the tip of your blade.")
         print("A tear drop of steaming dry ice lays on the ground.")
         windsTear(player)
+        proceed()
         nakedWizardEncounter()
     else:
         print("You shrug off the feeble wind and push past it.")
@@ -348,10 +387,10 @@ def goblinEncounterFunc():
     print("\n     -You proceed further into the Labyrinth-")
     print("Light comes only from the Helpful Orb")
     print("You round a corner to find a bench up ahead hewn " +
-          "into the rock wall")
+          "into the rock wall.")
     print("Sat on the bench is a goblin, his head is downcast, he looks sad.")
-    print("He hasn't noticed you yet")
-    print("A wicked looking axe in his hand is drenched in blood, it drips.\n")
+    print("He hasn't noticed you yet.")
+    print("A wicked looking axe in his hand is drenched in blood; it drips.\n")
     while True:
         print("Would you like to:")
         print("1- Ask if he is okay?")
@@ -518,7 +557,7 @@ def goblinsQuestionFunc():
             print("\n          :Mopey Goblin:")
             print("Really?!That would be great actually. Here you go")
             takeUpAxe()
-            print("Just needs a clean, thats all")
+            print("Just needs a wipe, thats all")
             print("I wouldn't hang about, the others arent keen on humans.")
             print("You seem like one of the good ones. Go back " +
                   "the way you came")
@@ -546,6 +585,7 @@ def goblinsQuestionFunc():
                     inventory(player)
                 else:
                     print("Well, what is your gut telling you?")
+            break
         elif mopeyGoblinQuestion.lower() in ["i", "inventory"]:
             inventory(player)
         else:
@@ -606,36 +646,36 @@ def nakedWizardEncounter():
             print("You get bad vibes from the naked wizard.")
             print("Attack is the only option. He must be trying to trick you")
             wizardFight = combat(nakedWizard)
-                if wizardFight == "win":
-                    print("This shouldn't happen.")
-                    print("The wizard is a non-combat win scenario")
-                    dead()
-                elif wizardFight == "dead":
-                    print(f"\nYou rush the forgetful archanist, " +
-                          f"{player.weapon} raised to strike.")
-                    print("However you fail to spot his hands.")
-                    print("The wizard whips open a scroll of paper " +
-                          "and whispers a word.")
-                    print("You see the image of a chicken flash in the air.")
-                    print("The world grows as feathers sprout from your skin.")
-                    print("For a moment, it is agony, then your mind is calm.")
-                    print("You are a chicken. You aren't worried " +
-                          "about anything.")
-                    print("\n         :Grand Wizard Methielteez:")
-                    print(f"Come on little {player.name}, I've been dying" +
-                          " for some nuggets.")
-                    dead()
-                else:
-                    print("You both charge. Then draw back." +
-                          " No one will win this fight.")
-                    print("You nod at each other and he points to a tunnel")
-                    secretTunnel()
+            if wizardFight == "win":
+                print("This shouldn't happen.")
+                print("The wizard is a non-combat win scenario")
+                dead()
+            elif wizardFight == "dead":
+                print(f"\nYou rush the forgetful archanist, " +
+                        f"{player.weapon} raised to strike.")
+                print("However you fail to spot his hands.")
+                print("The wizard whips open a scroll of paper " +
+                        "and whispers a word.")
+                print("You see the image of a chicken flash in the air.")
+                print("The world grows as feathers sprout from your skin.")
+                print("For a moment, it is agony, then your mind is calm.")
+                print("You are a chicken. You aren't worried " +
+                        "about anything.")
+                print("\n         :Grand Wizard Methielteez:")
+                print(f"Come on little {player.name}, I've been dying" +
+                        " for some nuggets.")
+                dead()
+            else:
+                print("You both charge. Then draw back." +
+                        " No one will win this fight.")
+                print("You nod at each other and he points to a tunnel")
+                secretTunnel()
             break
         elif wizardsChoice.lower() in ["2", "two"]:
             print(f"\n           :{player.name}:")
             print("Always good to meet a fellow traveller. " +
                   " Perhaps a trade? I have this potion.")
-            print("         :Grand Wizard Methielteez:")
+            print("\n         :Grand Wizard Methielteez:")
             print("A vial of Enlarge Hands! An unusual elixir indeed.")
             print("Let me see what I have around here. Ah how about this?")
             print("I have a scroll containing the spell Chickenify.")
