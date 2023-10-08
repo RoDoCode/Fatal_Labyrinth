@@ -39,15 +39,15 @@ player = Character(data[1][1], data[1][2], data[1][3], data[1][4], data[1][5],
                    data[1][6], data[1][7], data[1][8], data[1][9])
 
 helpfulOrb = Character(data[2][1], data[2][2], data[2][3], data[2][4],
-                       data[2][5], data[2][6], data[2][7], data[2][8], 
+                       data[2][5], data[2][6], data[2][7], data[2][8],
                        data[2][9])
 
 mopeyGoblin = Character(data[3][1], data[3][2], data[3][3], data[3][4],
-                        data[3][5], data[3][6], data[3][7], data[3][8], 
+                        data[3][5], data[3][6], data[3][7], data[3][8],
                         data[3][9])
 
 nakedWizard = Character(data[4][1], data[4][2], data[4][3], data[4][4],
-                        data[4][5], data[4][6], data[4][7], data[4][8], 
+                        data[4][5], data[4][6], data[4][7], data[4][8],
                         data[4][9])
 
 hummusDemon = Character(data[5][1], data[5][2], data[5][3],
@@ -55,11 +55,11 @@ hummusDemon = Character(data[5][1], data[5][2], data[5][3],
                         data[5][8], data[5][9])
 
 securityGuardLarry = Character(data[6][1], data[6][2], data[6][3],
-                               data[6][4], data[6][5], data[6][6], data[6][7], 
+                               data[6][4], data[6][5], data[6][6], data[6][7],
                                data[6][8], data[6][9])
 
 airElemental = Character(data[7][1], data[7][2], data[7][3],
-                         data[7][4], data[7][5], data[7][6], data[7][7], 
+                         data[7][4], data[7][5], data[7][6], data[7][7],
                          data[7][8], data[7][9])
 
 player.health = int(player.health)
@@ -68,13 +68,16 @@ player.attack = int(player.attack)
 
 # MECHANICAL FUNCTIONS
 
+
 def inventory(Character):
+    # inventory reveal function
     print(f'\nYou are armed with a {Character.weapon}, wearing ' +
           f'{Character.clothes} and carrying a {Character.item1}.' +
           f' There is a {Character.item2} in your pocket.\n')
 
 
 def windsTear(Character):
+    # picking up the air elementals tear bonus
     Character.defense = ((int(Character.defense)) * 3)
     print("\nThe tear instantly melts in your palm. You tingle.")
     print("There is a film of wind blowing over the surface of your body.")
@@ -82,19 +85,24 @@ def windsTear(Character):
 
 
 def rune(Character):
+    # crossing over the doorway rune bonus
     Character.health = (Character.health) * 2
 
 
 def takeUpAxe():
+    # exchanging weapons for the goblin axe bonus
     player.attack = mopeyGoblin.attack
     player.weapon = "bloodied axe"
 
 
 def noClothes(player):
+    # removing clothes negative effect
     player.clothes = "nothing"
     player.defense = 0
 
+
 def combat(Character1):
+    # combat function used for all encounters except instant death endings
     enemyAttack = int(Character1.attack)
     enemyHealth = int(Character1.health)
     attackRemainder = enemyAttack - player.defense
@@ -112,10 +120,18 @@ def combat(Character1):
         return "shrug"
 
 
+def playerStats():
+    # test code to be commented out before deployment but kept to troubleshoot
+    # code reveals stats and helps to track issues
+    print(f'\nPlayer stats H{player.health} D{player.defense}' + 
+          f' A{player.attack}\n')
+
+
 # NARRATIVE FUNCTIONS
 # player stats H50 A25 D25
 def gameStart():
-    print("\nYou wake to find yourself in a dark stone corridor, the floor is sand.")
+    print("\nYou wake to find yourself in a dark stone corridor, " +
+          "the floor is sand.")
     print("The air is musty, in your hand a glowing sphere throbs gently.")
     print("The Orb pulses and a voice emanates from inside.\n")
     introOne()
@@ -137,7 +153,8 @@ def introOne():
                 print("\n         :Helpful Orb:")
                 print("You look like a Bob!")
                 print("We are going to get on great Bob.")
-                print("I love that name. Bob, Bob, Bob. I could say it all day.")
+                print("I love that name. Bob, Bob, Bob. I could " +
+                      "say it all day.")
             print(f'\n{player.name}. Okay {player.name}, where are you from?')
             player.home = input(">")
             deathMemory()
@@ -162,10 +179,10 @@ def dead():
     player.health = int(data[1][3])
     player.attack = int(data[1][4])
     player.defense = int(data[1][5])
-    player.weapon = int(data[1][6])
-    player.clothes = int(data[1][7])
-    player.item1 = int(data[1][8])
-    player.item2 = int(data[1][9])
+    player.weapon = (data[1][6])
+    player.clothes = (data[1][7])
+    player.item1 = (data[1][8])
+    player.item2 = (data[1][9])
     while True:
         print("\nWould you like to try again? (yes/no)")
         tryAgain = input("> ")
@@ -173,7 +190,8 @@ def dead():
             introTwo()
             break
         elif tryAgain.lower() in ["no", "n"]:
-            print(f'\nGoodbye {player.name}, the Labyrinth is not for the faint of heart.')
+            print(f'\nGoodbye {player.name}, the Labyrinth is not' +
+                  f' for the faint of heart.')
             exit()
         elif tryAgain.lower() in ["i", "inventory"]:
             print("\nYou're dead. You don't have possessions.")
@@ -197,8 +215,10 @@ def readyOne():
 
 
 def introTwo():
-    print("\nYou wake to find yourself in a dark stone corridor again, the floor is the same sand.")
-    print("The air is just as musty as last time, in your hand the glowing sphere throbs gently.")
+    print("\nYou wake to find yourself in a dark stone corridor again," +
+          " the floor is the same sand.")
+    print("The air is just as musty as last time, in your hand the" +
+          " glowing sphere throbs gently.")
     print("The Orb pulses and speaks.")
     print("\n         :Helpful Orb:")
     print(f'Hi again {player.name}. Even I remember what just happened.')
@@ -252,6 +272,7 @@ def firstChoice():
         firstChoice = input("> ")
         if firstChoice.lower() in ["left", "l"]:
             ("\nYou've decided to take the left tunnel.")
+            playerStats()
             airElementalEncounter()
             break
         elif firstChoice.lower() in ["right", "r"]:
@@ -261,14 +282,15 @@ def firstChoice():
                 duckRune = input("> ")
                 if duckRune.lower() in ["no", "n"]:
                     print("\nYou cross the threshold of the right tunnel")
-                    print("You feel invigorated as the rune on the wall glows briefly.")
+                    print("You feel invigorated as the rune on the " +
+                          "wall glows briefly.")
                     rune(player)
-                    # player stats H100 A25 D25
+                    playerStats()
                     goblinEncounterFunc()
                     break
                 elif duckRune.lower() in ["yes", "y"]:
                     print("You duck beneath the rune cautiously.")
-                    # player stats H50 A25 D25
+                    playerStats()
                     goblinEncounterFunc()
                     break
                 else:
@@ -285,7 +307,8 @@ def airElementalEncounter():
     print("\n     -You proceed further into the Labyrinth-")
     print("There is a rushing sound of wind ahead.")
     print("You turn a corner to find a being of pure air facing you.")
-    print("Grains of sand from the floor swirling across the surface of a humanoid shape.")
+    print("Grains of sand from the floor swirling across the surface" +
+          " of a humanoid shape.")
     print("The Air Elemental gusts towards you.")
     elementalFight = combat(airElemental)
     if elementalFight == "dead":
@@ -306,7 +329,8 @@ def airElementalEncounter():
     else:
         print("You shrug off the feeble wind and push past it.")
         print("You are on a quest and nothing shall stop you.")
-        print("The Air Elemental is embarrassed and hurries away down the tunnels.")
+        print("The Air Elemental is embarrassed and hurries away" +
+              " down the tunnels.")
         nakedWizard()
 
 
@@ -314,7 +338,8 @@ def goblinEncounterFunc():
     #Mopey Goblin stats H20 A100
     print("\n     -You proceed further into the Labyrinth-")
     print("Light comes only from the Helpful Orb")
-    print("You round a corner to find a bench up ahead hewn into the rock wall")
+    print("You round a corner to find a bench up ahead hewn " +
+          "into the rock wall")
     print("Sat on the bench is a goblin, his head is downcast, he looks sad.")
     print("He hasn't noticed you yet") 
     print("A wicked looking axe in his hand is drenched in blood, it drips.\n")
@@ -336,14 +361,19 @@ def goblinEncounterFunc():
             break
         elif mopeyGoblinEncounter.lower() in ["2", "two"]:
             print("\nYou draw your sword and creep towards the creature.")
-            print("As you approach, you hear the Helpful Orb hold it's breath.")
+            print("As you approach, you hear the Helpful Orb" +
+                  " hold it's breath.")
             goblinFight = combat(mopeyGoblin)
             if goblinFight == "win":
                 print("The Goblin looks up at the sound and snarls at you.")
-                print(f'You are lightning fast, your {player.weapon} flashes right.')
-                print("The goblin tries to parry but the blow knocks him against the wall.")
-                print("He clumsily raises the axe above his head and you slash across his upraised arms.")
-                print("The limbs drops to the floor with the axe still gripped tightly.")
+                print(f'You are lightning fast, your {player.weapon}' +
+                      f' flashes right.')
+                print("The goblin tries to parry but the blow knocks" +
+                      " him against the wall.")
+                print("He clumsily raises the axe above his head and" +
+                      " you slash across his upraised arms.")
+                print("The limbs drops to the floor with the axe" +
+                      " still gripped tightly.")
                 print("The Goblin steps back; shocked.")
                 print("Then collapses, defeated.\n")
                 print("         :Mopey Goblin:")
@@ -353,14 +383,17 @@ def goblinEncounterFunc():
             elif goblinFight == "dead":
                 print("The goblin hears the intake of breath.")
                 print("He lurches towards you.")
-                print("You swing to strike but he powerslides underneath the blow")
-                print("You feel the weight of the axe embbed itself in your spine.")
+                print("You swing to strike but he powerslides" +
+                      " underneath the blow")
+                print("You feel the weight of the axe embbed" +
+                      " itself in your spine.")
                 print("A brave attempt.")
                 dead()
             else:
                 print("He spots you approaching and rushes to engage.")
                 print("You take a blow from his axe to your shoulder.")
-                print("You shrug off the puny attempt at violence and stare him down.")
+                print("You shrug off the puny attempt at violence" +
+                      " and stare him down.")
                 print("The goblin squeals and clutches his cheast.")
                 print("He has died of fright")
                 lootGoblin()
@@ -394,6 +427,7 @@ def lootGoblin():
             print("You hear ominous laughing in the corridor ahead")
             print("\n         :Helpful Orb:")
             print("That doesn't sound good. Go back!\n")
+# WRITE RUN/WALK GOBLIN GANG OR ELEMENTAL CHOICE HERE
             print("You hurry back to the turn and take the left tunnel.")
             airElementalEncounter()
             break
@@ -466,7 +500,8 @@ def goblinDeathChoice():
         print('Enter the number of your choice')
         goblinDeathChoice = input("> ")
         if goblinDeathChoice.lower() in ["1", "one"]:
-            print("\nYou scrabble for the vial in your pocket and gulp the elixir")
+            print("\nYou scrabble for the vial in your pocket" +
+                  " and gulp the elixir")
             print("Your hands tingle, they swell and begin to grow.")
             print("You die with massive hands and goblins laughing" +
                   " hysterically around you as your face goes purple.")
@@ -507,7 +542,7 @@ print("|  _/ _` | __/ _` | | | |    / _` | '_ \| | | | '__| | '_ \| __| '_ \ ")
 print("| || (_| | || (_| | | | |___| (_| | |_) | |_| | |  | | | | | |_| | | |")
 print("\_| \__,_|\__\__,_|_| \_____/\__,_|_.__/ \__, |_|  |_|_| |_|\__|_| |_|")
 print("                                          __/ |                       ")
-print("                                         |___/                        ")  
+print("                                         |___/                        ") 
 
 
 gameStart()
@@ -529,18 +564,10 @@ goblinEncounterFunc()
 
 print("     -You proceed into the labyrinth-")
 
-        
 """
-        1a Just looking for the way out? - Mopey_Goblin gives bad advice
-        2a No, I'm taking my orb for a walk. Hope your stuff all works out. - Mopey_Goblin goes back to moping
-        3a I'll trade you this clean sword for that manky axe if you like? - Mopey_Goblin accepts trade
-            Mopey_Goblin: 1a Oh just go back the way I came, take the second left after the screaming bulls head on 
-                             the wall and head straight. Can't miss it
-                          2a "Lovely looking orb. Have a nice walk." Begins to mop blood off the axe and ignores you.
-                          3a That would be really great. Here you go, it's a brilliant axe once you've cleaned it. 
-                            Thank you. I wouldn't hang about, the others arent keen on humans. You seem like one of
-                            the good ones though
-                              
-                                - 
-
+That would be really great. Here you go,
+it's a brilliant axe once you've cleaned it. 
+Thank you. I wouldn't hang about, the others
+arent keen on humans. You seem like one of
+the good ones though
 """
