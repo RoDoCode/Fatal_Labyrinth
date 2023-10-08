@@ -123,7 +123,7 @@ def combat(Character1):
 def playerStats():
     # test code to be commented out before deployment but kept to troubleshoot
     # code reveals stats and helps to track issues
-    print(f'\nPlayer stats H{player.health} D{player.defense}' + 
+    print(f'\nPlayer stats H{player.health} D{player.defense}' +
           f' A{player.attack}\n')
 
 
@@ -245,7 +245,7 @@ def deathMemory():
             break
         elif playerRemembers.lower() in ["no", "n"]:
             print("\n         :Helpful Orb:")
-            print("I thought you mightn't. I'm The Orb of Helping.") 
+            print("I thought you mightn't. I'm The Orb of Helping.")
             print("You came to this danger filled labyrinth,")
             print("to find an ancient relic. You found it... me!")
             print("Then you... we set off a booby-trap,")
@@ -325,23 +325,23 @@ def airElementalEncounter():
         print("The Air Elemental has met its end at the tip of your blade.")
         print("A tear drop of steaming dry ice lays on the ground.")
         windsTear(player)
-        nakedWizard()            
+        nakedWizardEncounter()
     else:
         print("You shrug off the feeble wind and push past it.")
         print("You are on a quest and nothing shall stop you.")
         print("The Air Elemental is embarrassed and hurries away" +
               " down the tunnels.")
-        nakedWizard()
+        nakedWizardEncounter()
 
 
 def goblinEncounterFunc():
-    #Mopey Goblin stats H20 A100
+    # Mopey Goblin stats H20 A100
     print("\n     -You proceed further into the Labyrinth-")
     print("Light comes only from the Helpful Orb")
     print("You round a corner to find a bench up ahead hewn " +
           "into the rock wall")
     print("Sat on the bench is a goblin, his head is downcast, he looks sad.")
-    print("He hasn't noticed you yet") 
+    print("He hasn't noticed you yet")
     print("A wicked looking axe in his hand is drenched in blood, it drips.\n")
     while True:
         print("Would you like to:")
@@ -487,7 +487,7 @@ def goblinsQuestionFunc():
                   " his head.")
             dead()
         elif mopeyGoblinQuestion.lower() in ["3", "three"]:
-            #NEEDS TEXT
+            # NEEDS TEXT
             takeUpAxe()
             print("hurray")
         else:
@@ -521,7 +521,7 @@ def goblinDeathChoice():
             dead()
 
 
-def nakedWizard():
+def nakedWizardEncounter():
     print("\n     -You proceed into the labyrinth-")
     print("The tunnel grows wider until it joins with a circular chamber.")
     print("At the centre of the chamber a massive column holds the ceiling.")
@@ -539,20 +539,19 @@ def nakedWizard():
     print("\n         :Grand Wizard Methielteez:")
     print("It's hard at first, living in the labyrinth, " +
           "but you'll get used to it")
-    print("\n1-Shake his hand and compliment his hat while looking for an exit.")
+    print("\n1-Shake his hand and compliment his hat " +
+          "while looking for an exit.")
     print("2-")
 
 
-
 # GAME START
-
 
 print("__   __                             _         _   _                   ")
 print("\ \ / /                            (_)       | | | |                  ")
 print(" \ V /___  _   _    __ _ _ __ ___   _ _ __   | |_| |__   ___          ")
 print("  \ // _ \| | | |  / _` | '__/ _ \ | | '_ \  | __| '_ \ / _ \         ")
 print("  | | (_) | |_| | | (_| | | |  __/ | | | | | | |_| | | |  __/         ")
-print("  \_/\___/ \__,_|  \__,_|_|  \___| |_|_| |_|  \__|_| |_|\___|         ")                                                                                                                                            
+print("  \_/\___/ \__,_|  \__,_|_|  \___| |_|_| |_|  \__|_| |_|\___|         ")
 print("______    _        _   _           _                _       _   _     ")
 print("|  ___|  | |      | | | |         | |              (_)     | | | |    ")
 print("| |_ __ _| |_ __ _| | | |     __ _| |__  _   _ _ __ _ _ __ | |_| |__  ")
@@ -560,16 +559,18 @@ print("|  _/ _` | __/ _` | | | |    / _` | '_ \| | | | '__| | '_ \| __| '_ \ ")
 print("| || (_| | || (_| | | | |___| (_| | |_) | |_| | |  | | | | | |_| | | |")
 print("\_| \__,_|\__\__,_|_| \_____/\__,_|_.__/ \__, |_|  |_|_| |_|\__|_| |_|")
 print("                                          __/ |                       ")
-print("                                         |___/                        ") 
+print("                                         |___/                        ")
 
 gameStart()
 
 exit()
 
 """
+
 That would be really great. Here you go,
-it's a brilliant axe once you've cleaned it. 
+it's a brilliant axe once you've cleaned it.
 Thank you. I wouldn't hang about, the others
 arent keen on humans. You seem like one of
 the good ones though
+
 """
