@@ -66,6 +66,8 @@ player.health = int(player.health)
 player.defense = int(player.defense)
 player.attack = int(player.attack)
 
+deathCount = 0
+
 # MECHANICAL FUNCTIONS
 
 
@@ -174,6 +176,7 @@ def introOne():
 
 
 def dead():
+    global deathCount
     print("\nYOU ARE DEAD")
     print(f'{player.name} from {player.home} is no more.')
     player.health = int(data[1][3])
@@ -183,6 +186,7 @@ def dead():
     player.clothes = (data[1][7])
     player.item1 = (data[1][8])
     player.item2 = (data[1][9])
+    deathCount += 1
     while True:
         print("\nWould you like to try again? (yes/no)")
         tryAgain = input("> ")
@@ -190,7 +194,8 @@ def dead():
             introTwo()
             break
         elif tryAgain.lower() in ["no", "n"]:
-            print(f'\nGoodbye {player.name}, the Labyrinth is not' +
+            print(f'\nBut you only died {deathCount} times...')
+            print(f'Goodbye {player.name}, the Labyrinth is not' +
                   f' for the faint of heart.')
             exit()
         elif tryAgain.lower() in ["i", "inventory"]:
@@ -441,10 +446,10 @@ def turnBack():
     print("1-Run back the way you came.")
     print("2-Carefully carry on ahead")
     turnBack1 = input("> ")
-    if turnBack1.lower in ["1", "one"]:
+    if turnBack1.lower() in ["1", "one"]:
         print("You hurry back to the turn and take the left tunnel.")
         airElementalEncounter()
-    elif turnBack1.lower in ["2", "two"]:
+    elif turnBack1.lower() in ["2", "two"]:
         print("You gingerly carry on towards the laughter.")
         goblinGang()
     else:
@@ -465,7 +470,7 @@ def goblinGang():
 
 def goblinsQuestionFunc():
     while True:
-        print('1- "Just looking for the way out mate?"')
+        print('\n1- "Just looking for the way out mate?"')
         print('2- "No, I am taking my orb for a walk. Hope your stuff all' +
               ' works out."')
         print('3- "I will trade you this clean sword for that dirty axe if' +
@@ -516,7 +521,7 @@ def goblinsQuestionFunc():
             while True:
                 print("Do you trust the Goblin? (yes/no)")
                 trustGoblin = input("> ")
-                if trustGoblin.lower in ["yes", "y"]:
+                if trustGoblin.lower() in ["yes", "y"]:
                     print(f"\n           :{player.name}:")
                     print("Thank you friend, good luck.")
                     print("\nYou hurry back the way you came.")
@@ -524,7 +529,7 @@ def goblinsQuestionFunc():
                     print("You carry on towards the sound of rushing air.")
                     airElementalEncounter()
                     break
-                elif trustGoblin.lower in ["no", "n"]:
+                elif trustGoblin.lower() in ["no", "n"]:
                     print(f"\n           :{player.name}:")
                     print("Appreciate the advice, but we'll take our chances.")
                     print("\n          :Mopey Goblin:")
