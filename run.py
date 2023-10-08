@@ -487,6 +487,7 @@ def goblinsQuestionFunc():
                   " his head.")
             dead()
         elif mopeyGoblinQuestion.lower() in ["3", "three"]:
+            #NEEDS TEXT
             takeUpAxe()
             print("hurray")
         else:
@@ -521,9 +522,26 @@ def goblinDeathChoice():
 
 
 def nakedWizard():
-    print("The exit can't be far now.")
-    print("Just this nake wizard to get past.")
-    exit()
+    print("\n     -You proceed into the labyrinth-")
+    print("The tunnel grows wider until it joins with a circular chamber.")
+    print("At the centre of the chamber a massive column holds the ceiling.")
+    print("As you stare at the strange cavern architecture,")
+    print("A face peers round from behind the column.")
+    print("It is a tall man wearing a pointy hat.")
+    print("\n         :Grand Wizard Methielteez:")
+    print("Ah you're here! At last!")
+    print("I expect it took you quite a few deaths to get this far.")
+    print("It certainly took me more than a few.")
+    print("Funny what that can do to the mind after a while," +
+          " makes one forgetful")
+    print("\nHe steps out further from behind the column.")
+    print("The wizard appears to have forgotten to dress himself.")
+    print("\n         :Grand Wizard Methielteez:")
+    print("It's hard at first, living in the labyrinth, " +
+          "but you'll get used to it")
+    print("\n1-Shake his hand and compliment his hat while looking for an exit.")
+    print("2-")
+
 
 
 # GAME START
@@ -544,25 +562,9 @@ print("\_| \__,_|\__\__,_|_| \_____/\__,_|_.__/ \__, |_|  |_|_| |_|\__|_| |_|")
 print("                                          __/ |                       ")
 print("                                         |___/                        ") 
 
-
 gameStart()
 
-
-
-
-
-# Chapter 2A - Right Fork - Mopey Goblin Encounter
-
-print("You travel down the gloomey tunnels")
-print("Light comes only from the Helpful Orb")
-print("You round a corner to find a bench up ahead hewn into the rock wall")
-print("Sat on the bench is a goblin, his head is downcast, he looks sad.")
-print("He hasn't noticed you yet") 
-print("A wicked looking axe in his hand is drenched in blood, it drips.\n")
-
-goblinEncounterFunc()
-
-print("     -You proceed into the labyrinth-")
+exit()
 
 """
 That would be really great. Here you go,
