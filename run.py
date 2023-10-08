@@ -94,7 +94,7 @@ def rune(Character):
 def takeUpAxe():
     # exchanging weapons for the goblin axe bonus
     player.attack = mopeyGoblin.attack
-    player.weapon = "bloodied axe"
+    player.weapon = mopeyGoblin.weapon
 
 
 def tradeForChicken():
@@ -182,6 +182,35 @@ def introOne():
 def dead():
     global deathCount
     print("\nYOU ARE DEAD")
+    print(f'{player.name} from {player.home} is no more.')
+    player.health = int(data[1][3])
+    player.attack = int(data[1][4])
+    player.defense = int(data[1][5])
+    player.weapon = (data[1][6])
+    player.clothes = (data[1][7])
+    player.item1 = (data[1][8])
+    player.item2 = (data[1][9])
+    deathCount += 1
+    while True:
+        print("\nWould you like to try again? (yes/no)")
+        tryAgain = input("> ")
+        if tryAgain.lower() in ["yes", "y"]:
+            introTwo()
+            break
+        elif tryAgain.lower() in ["no", "n"]:
+            print(f'\nBut you only died {deathCount} times...')
+            print(f'Goodbye {player.name}, the Labyrinth is not' +
+                  f' for the faint of heart.')
+            exit()
+        elif tryAgain.lower() in ["i", "inventory"]:
+            print("\nYou're dead. You don't have possessions.")
+        else:
+            print("You must choose.")
+
+
+def effectivelyDead():
+    global deathCount
+    print("\nYOU ARE EFFECTIVELY DEAD")
     print(f'{player.name} from {player.home} is no more.')
     player.health = int(data[1][3])
     player.attack = int(data[1][4])
@@ -643,7 +672,7 @@ def nakedWizardEncounter():
     while True:
         wizardsChoice = input("> ")
         if wizardsChoice.lower() in ["1", "one"]:
-            print("You get bad vibes from the naked wizard.")
+            print("\nYou get bad vibes from the naked wizard.")
             print("Attack is the only option. He must be trying to trick you")
             wizardFight = combat(nakedWizard)
             if wizardFight == "win":
@@ -664,7 +693,7 @@ def nakedWizardEncounter():
                 print("\n         :Grand Wizard Methielteez:")
                 print(f"Come on little {player.name}, I've been dying" +
                         " for some nuggets.")
-                dead()
+                effectivelyDead()
             else:
                 print("You both charge. Then draw back." +
                         " No one will win this fight.")

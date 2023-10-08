@@ -16,6 +16,7 @@ Users can try to find their way through the labyrinth while avoiding the gruesom
 - In the narrative world of Fatal Labyrinth unfortunetly death is an everyday occurence so the likelihood that your character survives to escape is extremely low, there may only be one correct route for you to leave with your life. So the game is designed to be played repeatedly in quick succession, the player learns form their mistakes and tries again. 
 - Intro non-player characters can be told that you remember what happened moments before so they don't repeat the same information to you. It is assumed that the Ladyrinth has magically revived you at this previous point in time before your death so that you can repeat the torture of the Labyrinth again and again. 
 
+- SPOILER: For the purposes of marking and avoiding confusion I have added the directions for how to clear the labyrinth at the bottom of this ReadMe so that examiners might navigate without aggrivation. The puzzle is designed to be challenging, there is a way out, but for those who prefer a hint, it is provided here. 
 # Features
 
 Character Stats
@@ -97,5 +98,14 @@ This project was deployed using Code Institute's mock terminal for Heroku.
 - Code institute for the Deployment Terminal
 - My fiance who left me to my work while she is 3 months pregnant with our first child.
 
+## SPOILER
+
+- n - Enter any name (Bob is default)
+- n - Enter any location
+- y - yes ready to go
+- r - right to sad goblin
+- n - no do not duck below rune
+- 1 - ask if he's okay
+- 
 
 
