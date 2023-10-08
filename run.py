@@ -97,6 +97,10 @@ def takeUpAxe():
     player.weapon = "bloodied axe"
 
 
+def tradeForChicken():
+    player.item2 = "Chickenify Spell"
+
+
 def noClothes(player):
     # removing clothes negative effect
     player.clothes = "nothing"
@@ -602,11 +606,25 @@ def nakedWizardEncounter():
             print("You get bad vibes from the naked wizard.")
             print("Attack is the only option. He must be trying to trick you")
             wizardFight = combat(nakedWizard)
-                if wizardFight == "win"
-                elif wizardFight == "dead"
-                    print(f"You rush the forgetful archanist, " +
-                          f"{player.weapon} in hand.")
-                    print("")
+                if wizardFight == "win":
+                    print("This shouldn't happen.")
+                    print("The wizard is a non-combat win scenario")
+                    dead()
+                elif wizardFight == "dead":
+                    print(f"\nYou rush the forgetful archanist, " +
+                          f"{player.weapon} raised to strike.")
+                    print("However you fail to spot his hands.")
+                    print("The wizard whips open a scroll of paper " +
+                          "and whispers a word.")
+                    print("You see the image of a chicken flash in the air.")
+                    print("The world grows as feathers sprout from your skin.")
+                    print("For a moment, it is agony, then your mind is calm.")
+                    print("You are a chicken. You aren't worried " +
+                          "about anything.")
+                    print("\n         :Grand Wizard Methielteez:")
+                    print(f"Come on little {player.name}, I've been dying" +
+                          " for some nuggets.")
+                    dead()
                 else:
                     print("You both charge. Then draw back." +
                           " No one will win this fight.")
@@ -614,7 +632,28 @@ def nakedWizardEncounter():
                     secretTunnel()
             break
         elif wizardsChoice.lower() in ["2", "two"]:
-            print()
+            print(f"\n           :{player.name}:")
+            print("Always good to meet a fellow traveller. " +
+                  " Perhaps a trade? I have this potion.")
+            print("         :Grand Wizard Methielteez:")
+            print("A vial of Enlarge Hands! An unusual elixir indeed.")
+            print("Let me see what I have around here. Ah how about this?")
+            print("I have a scroll containing the spell Chickenify.")
+            while True:
+                print("Do you want the power to Chickenify someone? (yes/no)")
+                chickenifyOffer = input("> ")
+                if chickenifyOffer.lower() in ["yes", "y"]:
+                    print(f"\n           :{player.name}:")
+                    print("Alright, sounds like a fair trade.")
+                    tradeForChicken()
+                    break
+                elif chickenifyOffer.lower() in ["no", "n"]:
+                    print()
+                    break
+                elif wizardsChoice.lower() in ["i", "inventory"]:
+                    inventory(player)
+                else:
+                    print("I'm not sure what you mean. The offer stands.")
             break
         elif wizardsChoice.lower() in ["3", "three"]:
             print()
