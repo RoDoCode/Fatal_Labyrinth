@@ -68,7 +68,8 @@ I have manually tested this project by doing the
 
 ## Solved Bugs
 
-- There was an error while opening the relevant workspace on CodeAnywhere which left the workspace permanently in a state of "starting". So it could not be closed or opened. I created a new workspace, however this did not contain the updated GitIgnore file. When I pushed to GitHub the creds.json file was pushed to the public platform. This is not acceptable. I updated the GitIgnore file but creds.json remained in the commit history. After much research I discovered the "git reset --hard ~Head" command. Which steps back a commit and deletes the previous commit from the history once a force push is made. This cleared any sensitive data from GitHub and solved the issue
+- There was an error while opening the relevant workspace on CodeAnywhere which left the workspace permanently in a state of "starting". So it could not be closed or opened. I created a new workspace, however this did not contain the updated GitIgnore file. When I pushed to GitHub the creds.json file was pushed to the public platform. This is not acceptable. I updated the GitIgnore file but creds.json remained in the commit history. After much research I discovered the "git reset --hard ~Head" command. Which steps back a commit and deletes the previous commit from the history once a force push is made. This cleared any sensitive data from GitHub and solved the issue.
+- After leaving time for the now unconnected commit files to be deleted with the waste disposal sweep of GitHub it appeared the creds file would not be deleted. The only option was to delete that creds file from google cloud platform and generate a new creds file so that the exposed file no longer risked the security of any data. This was done and all security concerns were resolved.
 
 - Editing the vertical ruler settings value to 80 allowed me to avoid the repeated error warnings for lines which were over 79 characters. 
 

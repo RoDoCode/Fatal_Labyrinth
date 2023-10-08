@@ -424,25 +424,43 @@ def lootGoblin():
             print("\nThe bloody choppa will do great things in your hands.")
             print(f'You drop the {player.weapon}, and take up the axe.')
             takeUpAxe()
-            print("You hear ominous laughing in the corridor ahead")
-            print("\n         :Helpful Orb:")
-            print("That doesn't sound good. Go back!\n")
-# WRITE RUN/WALK GOBLIN GANG OR ELEMENTAL CHOICE HERE
-            print("You hurry back to the turn and take the left tunnel.")
-            airElementalEncounter()
-            break
+            turnBack()
         elif collectAxe.lower() in ["no", "n"]:
             print("\nYou think better than to touch the axe.")
-            print("You hear laughing in the corridor ahead")
-            print("\n         :Helpful Orb:")
-            print("That doesn't sound good. Go back!\n")
-            print("You hurry back to the turn and take the left tunnel.")
-            airElementalEncounter()
-            break
+            turnBack()
         elif collectAxe.lower() in ["i", "inventory"]:
             inventory(player)
         else:
             print("\nThat doesn't answer the question.")
+
+
+def turnBack():
+    print("You hear ominous laughing in the corridor ahead")
+    print("\n         :Helpful Orb:")
+    print("That doesn't sound good. Go back!\n")
+    print("1-Run back the way you came.")
+    print("2-Carefully carry on ahead")
+    turnBack1 = input("> ")
+    if turnBack1.lower in ["1", "one"]:
+        print("You hurry back to the turn and take the left tunnel.")
+        airElementalEncounter()
+    elif turnBack1.lower in ["2", "two"]:
+        print("You gingerly carry on towards the laughter.")
+        goblinGang()
+    else:
+        print("You spend too long thinking.")
+        goblinGang()
+
+
+def goblinGang():
+    print("\nRunning towards you down the tunnel is a gang " +
+          "of chattering Goblins.")
+    print("They seem much cheerier than your last encounter " +
+          "and are all heavily armed.")
+    print("Before you can ask how they are feeling," +
+          " a blow dart impacts your neck.")
+    print("You feel the poison burning. You have seconds to live.")
+    goblinDeathChoice()
 
 
 def goblinsQuestionFunc():
@@ -458,18 +476,16 @@ def goblinsQuestionFunc():
             print(f"\n           :{player.name}:")
             print("Just looking for the way out mate?")
             print("\n            :Mopey Goblin:")
-            print("Oh just carry on this way, take the second left " +
-                  "after the screaming bulls head on the wall and head " +
-                  "straight. Can't miss it\n")
+            print("Oh right... well just carry on along this tunnel.")
+            print("When you come to the screaming bulls head on the wall,")
+            print("Hang a left and head staight. Cant miss it.\n")
             print("You hurry off down the corridor.")
-            print("As you pass a screaming bulls head. Cackles sound nearby")
-            print("The echoes make it impossible to find the source")
-            print("You sprint down the second corridor to the left")
-            print("Running headlong into a gang of chattering Goblins")
-            print("Before you can ask how they are feeling," +
-                  " a blow dart impacts your neck.")
-            print("You feel the poison burning. You have seconds to live.")
-            goblinDeathChoice()
+            print("As you find a groteque bulls head on the " +
+                  "wall. Cackles sound nearby")
+            print("The echoes make it impossible to locate the source")
+            print("You sprint down the corridor to the left")
+            goblinGang()
+            break
         elif mopeyGoblinQuestion.lower() in ["2", "two"]:
             print(f"\n           :{player.name}:")
             print("No, I am taking my orb for a walk. Hope your stuff all" +
@@ -486,10 +502,43 @@ def goblinsQuestionFunc():
             print("He gives you a grin...and swings the axe up above" +
                   " his head.")
             dead()
+            break
         elif mopeyGoblinQuestion.lower() in ["3", "three"]:
-            # NEEDS TEXT
+            print(f"\n           :{player.name}:")
+            print(f"Care to trade your axe for my clean {player.weapon}?")
+            print("\n          :Mopey Goblin:")
+            print("Really?!That would be great actually. Here you go")
             takeUpAxe()
-            print("hurray")
+            print("Just needs a clean, thats all")
+            print("I wouldn't hang about, the others arent keen on humans.")
+            print("You seem like one of the good ones. Go back " +
+                  "the way you came")
+            while True:
+                print("Do you trust the Goblin? (yes/no)")
+                trustGoblin = input("> ")
+                if trustGoblin.lower in ["yes", "y"]:
+                    print(f"\n           :{player.name}:")
+                    print("Thank you friend, good luck.")
+                    print("\nYou hurry back the way you came.")
+                    print("Bringing you back to the left tunnel.")
+                    print("You carry on towards the sound of rushing air.")
+                    airElementalEncounter()
+                    break
+                elif trustGoblin.lower in ["no", "n"]:
+                    print(f"\n           :{player.name}:")
+                    print("Appreciate the advice, but we'll take our chances.")
+                    print("\n          :Mopey Goblin:")
+                    print("Suit yourself. See you next time.")
+                    print("\nYou confidently continue on down the corridor" +
+                          " for some time.")
+                    goblinGang()
+                    break
+                elif trustGoblin.lower() in ["i", "inventory"]:
+                    inventory(player)
+                else:
+                    print("Well, what is your gut telling you?")
+        elif mopeyGoblinQuestion.lower() in ["i", "inventory"]:
+            inventory(player)
         else:
             print("The Mopey Goblin stares at you intently, waiting.")
 
