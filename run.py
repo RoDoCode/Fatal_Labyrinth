@@ -88,12 +88,12 @@ def windsTear(Character):
 
 def rune(Character):
     # crossing over the doorway rune bonus
-    Character.health = (Character.health) * 2
+    Character.health = int(Character.health) * 2
 
 
 def takeUpAxe():
     # exchanging weapons for the goblin axe bonus
-    player.attack = mopeyGoblin.attack
+    player.attack = int(mopeyGoblin.attack)
     player.weapon = mopeyGoblin.weapon
 
 
@@ -101,10 +101,15 @@ def tradeForChicken():
     player.item2 = "Chickenify Spell"
 
 
-def noClothes(player):
-    # removing clothes negative effect
+def noClothes():
+    # removing clothes effect
     player.clothes = "nothing"
-    player.defense = 0
+
+
+def magicArmour():
+    # adds magic armour 
+    player.clothes = "gleaming green armour"
+    player.defense = int(player.defense) * 2
 
 
 def combat(Character1):
@@ -179,6 +184,33 @@ def introOne():
             print("This is no time for weird answers. Just say yes or no.")
 
 
+def introTwo():
+    print("\nYou wake to find yourself in a dark stone corridor again," +
+          " the floor is the same sand.")
+    print("The air is just as musty as last time, in your hand the" +
+          " glowing sphere throbs gently.")
+    print("The Orb pulses and speaks.")
+    print("\n         :Helpful Orb:")
+    print(f'Hi again {player.name}. Even I remember what just happened.')
+    print("Or at least did...will...has happened. Doesn't matter.")
+    print("Brutal, just brutal. Need a minute to shake that off.")
+    print("The Labyrinth seems to respawn you at this moment in time.")
+    print("Let's go again. This time we'll be extra careful.")
+    readyOne()
+
+
+def introThree():
+    print("\nYou're in the corridor, floor obviously still sand.")
+    print("You are used to the air by now")
+    print("You wait for the Orb to speak.")
+    print("\n         :Helpful Orb:")
+    print(f'{player.name}. We've died {deathCount} times now.')
+    print("We could stop. That last one was awful. I didn't like it at all.")
+    print("The Labyrinth has brought us back here as usual.")
+    print('I don't think "Extra careful" is cutting it. We need a plan.')
+    readyOne()
+
+
 def dead():
     global deathCount
     print("\nYOU ARE DEAD")
@@ -195,7 +227,10 @@ def dead():
         print("\nWould you like to try again? (yes/no)")
         tryAgain = input("> ")
         if tryAgain.lower() in ["yes", "y"]:
-            introTwo()
+            if deathCount < 5:
+                introTwo()
+            else: 
+                introThree()
             break
         elif tryAgain.lower() in ["no", "n"]:
             print(f'\nBut you only died {deathCount} times...')
@@ -286,21 +321,6 @@ def defendOrFreeze():
         else:
             print("You aren't thinking clearly.")
             break
-
-
-def introTwo():
-    print("\nYou wake to find yourself in a dark stone corridor again," +
-          " the floor is the same sand.")
-    print("The air is just as musty as last time, in your hand the" +
-          " glowing sphere throbs gently.")
-    print("The Orb pulses and speaks.")
-    print("\n         :Helpful Orb:")
-    print(f'Hi again {player.name}. Even I remember what just happened.')
-    print("Or at least did...will...has happened. Doesn't matter.")
-    print("Brutal, just brutal. Need a minute to shake that off.")
-    print("The Labyrinth seems to respawn you at this moment in time.")
-    print("Let's go again. This time we'll be extra careful.")
-    readyOne()
 
 
 def deathMemory():
@@ -475,6 +495,7 @@ def goblinEncounterFunc():
                 print("He has died of fright")
                 lootGoblin()
         elif mopeyGoblinEncounter.lower() in ["3", "three"]:
+            noClothes()
             print("\nYou decide upon shock and awe.")
             print('"Bold!" you think as you strip down in the dark tunnel.')
             print('"Come out swinging" you say to yourself.')
@@ -545,7 +566,7 @@ def goblinsQuestionFunc():
         print('\n1- "Just looking for the way out mate?"')
         print('2- "No, I am taking my orb for a walk. Hope your stuff all' +
               ' works out."')
-        print('3- "I will trade you this clean sword for that dirty axe if' +
+        print(f'3- "I will trade you this {player.weapon} for that {mopeyGoblin.weapon} if' +
               ' you like?"')
         print('Enter the number of your choice')
         mopeyGoblinQuestion = input("> ")
@@ -582,14 +603,15 @@ def goblinsQuestionFunc():
             break
         elif mopeyGoblinQuestion.lower() in ["3", "three"]:
             print(f"\n           :{player.name}:")
-            print(f"Care to trade your axe for my clean {player.weapon}?")
+            print(f'I will trade you this {player.weapon} for ' +
+                  f'that {mopeyGoblin.weapon} if you like?')
             print("\n          :Mopey Goblin:")
-            print("Really?!That would be great actually. Here you go")
+            print("Really?!That would be great actually. Here you go.")
             takeUpAxe()
-            print("Just needs a wipe, thats all")
+            print("Just needs a wipe, thats all.")
             print("I wouldn't hang about, the others arent keen on humans.")
             print("You seem like one of the good ones. Go back " +
-                  "the way you came")
+                  "the way you came.")
             while True:
                 print("Do you trust the Goblin? (yes/no)")
                 trustGoblin = input("> ")
@@ -635,10 +657,11 @@ def goblinDeathChoice():
                   " hysterically around you as your face goes purple.")
             dead()
         elif goblinDeathChoice.lower() in ["2", "two"]:
-            print("\nYou hurl the screaming orb at the largest goblin")
-            print("Your only friend and source of light smashes and curses" +
-                  " your name")
-            print("You die in darkness as goblins cackle and crowd in")
+            print("\nYou hurl the screaming orb at the largest goblin.")
+            print("Your only friend and source of light smashes against his" +
+                  " armour and curses your name.")
+            print("You die in darkness as goblins cackle and crowd in" +
+                  " to loot you.")
             dead()
         else:
             print(f'You shout "{goblinDeathChoice}", which means nothing to' +
@@ -646,6 +669,25 @@ def goblinDeathChoice():
             print("The poison dart works quickly")
             print("You die in the tunnels. The Helpful Orb weeps for you.")
             dead()
+
+
+def approachWiz():
+    while True:
+        print("Approach the wizard? (yes/no)")
+        approachWizOption = input("> ")
+        if approachWizOption.lower() in ["yes", "y"]:
+            print("\nYou take a few steps towards the tall man.")
+            break
+        elif approachWizOption.lower() in ["no", "n"]:
+            print("\nSomething feels off. You hold your ground.")
+            break
+        elif approachWizOption.lower() in ["i", "inventory"]:
+            inventory(player)
+        else:
+            print("\nYou blurt out:")
+            print(f'            :{player.name}:')
+            print(f'{approachWizOption}')
+            break
 
 
 def nakedWizardEncounter():
@@ -661,6 +703,7 @@ def nakedWizardEncounter():
     print("It certainly took me more than a few.")
     print("Funny what that can do to the mind after a while," +
           " makes one forgetful")
+    approachWiz()
     print("\nHe steps out further from behind the column.")
     print("The wizard appears to have forgotten to dress himself.")
     print("\n         :Grand Wizard Methielteez:")
@@ -689,10 +732,10 @@ def nakedWizardEncounter():
                 print("The world grows as feathers sprout from your skin.")
                 print("For a moment, it is agony, then your mind is calm.")
                 print("You are a chicken. You aren't worried " +
-                        "about anything.")
+                        "about anything anymore.")
                 print("\n         :Grand Wizard Methielteez:")
-                print(f"Come on little {player.name}, I've been dying" +
-                        " for some nuggets.")
+                print(f"Come on little {player.name}, lets find you a coop" +
+                        " to live in. That spell is permanent you know.")
                 effectivelyDead()
             else:
                 print("You both charge. Then draw back." +
@@ -715,17 +758,38 @@ def nakedWizardEncounter():
                     print(f"\n           :{player.name}:")
                     print("Alright, sounds like a fair trade.")
                     tradeForChicken()
+                    print("You place the scroll in your pocket and hand" +
+                          " over the potion")
+                    secretTunnel()
                     break
                 elif chickenifyOffer.lower() in ["no", "n"]:
-                    print()
+                    print("\n         :Grand Wizard Methielteez:")
+                    print("Fair enough. Not everyone want to turn someone else into a chicken.")
+                    secretTunnel()
                     break
-                elif wizardsChoice.lower() in ["i", "inventory"]:
+                elif chickenifyOffer.lower() in ["i", "inventory"]:
                     inventory(player)
                 else:
                     print("I'm not sure what you mean. The offer stands.")
             break
         elif wizardsChoice.lower() in ["3", "three"]:
-            print()
+            print(f"\n           :{player.name}:")
+            print("You're stark naked! You must be freezing.")
+            print("You can have these? I'll find something else.)
+            print(f'\n You gesture to {player.clothes}.)
+            print("\n         :Grand Wizard Methielteez:")
+            print("Why thank you young one! Delightful. I accept.")
+            noClothes()
+            print("I happen to have these spare, I never liked the colour.")
+            magicArmour()
+            print("\nThe wizard clicks his fingers. Your tattered " +
+                  "clothes teleport on to him.")
+            print("A set of gleaming green armour aparates all " +
+                  "about you. It fits perfectly.")
+            print("\n         :Grand Wizard Methielteez:")
+            print("That's better. Oh these are comfy, and still warm.)
+            print("You see what I mean about the green; hideous.")
+            secretTunnel()
             break
         elif wizardsChoice.lower() in ["i", "inventory"]:
             inventory(player)
@@ -733,6 +797,41 @@ def nakedWizardEncounter():
             print("You blurt out a weird sound and" +
                   " the wizard waits unsurprised.")
 
+def secretTunnel():
+    print("\nYou chat with the wizard for a short time and" +
+          " explain your situation")
+    print("\n         :Grand Wizard Methielteez:")
+    print("If you and the Orb are looking for a way out you're almost there.")
+    print("Theres a tunnel under my desk which leads directly " +
+          "to an EXIT door".)
+    print("But the door is guarded by a troll named Larry who" +
+          " used to be a bouncer.")
+    print("You'll have a hard time getting passed him.)
+    while True:
+        print("\nDo you want to take the tunnel? (yes/no)")
+        secretTunnelChoice = input("> ")
+        if secretTunnelChoice.lower() in ["yes", "y"]:
+            print("\n         :Grand Wizard Methielteez:")
+            print("Very well then. Best of luck. Give my regards to Larry.")
+            slideToLarry()
+            break
+        elif secretTunnelChoice.lower() in ["no", "n"]:
+            print(f"\n           :{player.name}:")
+            print("I think I'll find my own way out.")
+            print("\n         :Grand Wizard Methielteez:")
+            print("Jolly good. There's a tunnel over there. No " +
+                  "clue where it goes.")
+            hummusDemon()
+            break
+        elif secretTunnelChoice.lower() in ["i", "inventory"]:
+            inventory(player)
+        else:
+            print("\n         :Grand Wizard Methielteez:")
+            print("I'm not sure what you mean youngling")
+
+def slideToLarry()
+
+def hummusDemon()
 
 # GAME START
 
@@ -754,13 +853,3 @@ print("                                         |___/                        ")
 gameStart()
 
 exit()
-
-"""
-
-That would be really great. Here you go,
-it's a brilliant axe once you've cleaned it.
-Thank you. I wouldn't hang about, the others
-arent keen on humans. You seem like one of
-the good ones though
-
-"""

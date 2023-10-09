@@ -100,12 +100,17 @@ This project was deployed using Code Institute's mock terminal for Heroku.
 
 ## SPOILER
 
-- n - Enter any name (Bob is default)
-- n - Enter any location
-- y - yes ready to go
+- n - Name (Bob is default)
+- n - No memory
+- y - yes ready
 - r - right to sad goblin
 - n - no do not duck below rune
 - 1 - ask if he's okay
+- 3 - trade for the axe
+- y - yes trust the goblin
+- y - yes fight the elemental
+- y - yes keep going
+- 3 - gift the wizard clothes
 - 
 
 
