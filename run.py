@@ -880,71 +880,71 @@ def slideToLarry():
             print("1-Defend yourself against Larry.")
             print("2-Offer Larry the potion in you pocket.")
             stopLarry = input("> ")
-                if stopLarry.lower() in ["1", "one"]:
-                    print(f'You raise your {player.weapon}.')
-                    print("Larry laughs. Loud and deep.")
-                    print("\n         :Security Troll Larry:")
-                    print("NO BLADES IN A GUN FIGHT!")
-                    print(f'He reveals a {securityGuardLarry.weapon}.')
-                    print("You hear an earth shattering shot ring out.")
-                    print("Your head explodes.")
-                    dead()
-                    break
-                if stopLarry.lower() in ["2", "two"]:
-                    print(f"         :{player.name}:")
-                    print(f"Wait Larry! I have this {player.item2}.")
-                    print("It makes your hands bigger!")
-                    print("It's yours if you let me out that door behind you.")
-                    print("Larry thinks hard for a moment.")
-                    print("He takes a step back and stares at his small paws.")
-                    print("\n         :Security Troll Larry:")
-                    print("AGREE. GIVE HERE")
-                    print("\nThe troll snatches the tiny potion and eats" +
-                          " it whole.")
-                    print("His hands swell until they are just " +
-                          "slightly too big.")
-                    print("Larry is thrilled, he opens the door for you " +
-                          "while staring at his giant mits giggling.")
-                    outside()
-                    break
-                else:
-                    print("\nLarry stamps on you before you can" +
-                          " decide anything.")
-                    dead()
-                    break
+            if stopLarry.lower() in ["1", "one"]:
+                print(f'You raise your {player.weapon}.')
+                print("Larry laughs. Loud and deep.")
+                print("\n         :Security Troll Larry:")
+                print("NO BLADES IN A GUN FIGHT!")
+                print(f'He reveals a {securityGuardLarry.weapon}.')
+                print("You hear an earth shattering shot ring out.")
+                print("Your head explodes.")
+                dead()
+                break
+            if stopLarry.lower() in ["2", "two"]:
+                print(f"         :{player.name}:")
+                print(f"Wait Larry! I have this {player.item2}.")
+                print("It makes your hands bigger!")
+                print("It's yours if you let me out that door behind you.")
+                print("Larry thinks hard for a moment.")
+                print("He takes a step back and stares at his small paws.")
+                print("\n         :Security Troll Larry:")
+                print("AGREE. GIVE HERE")
+                print("\nThe troll snatches the tiny potion and eats" +
+                      " it whole.")
+                print("His hands swell until they are just " +
+                      "slightly too big.")
+                print("Larry is thrilled, he opens the door for you " +
+                      "while staring at his giant mits giggling.")
+                outside()
+                break
+            else:
+                print("\nLarry stamps on you before you can" +
+                      " decide anything.")
+                dead()
+                break
     elif player.item2 in ["Chickenify Spell"]:
         while True:
             print("1-Defend yourself against Larry.")
             print("2-Use Chickenify spell scroll on Larry")
-                stopLarry = input("> ")
-                if stopLarry.lower() in ["1", "one"]:
-                    print(f'You raise your {player.weapon}.')
-                    print("Larry laughs. Loud and deep.")
-                    print("\n         :Security Troll Larry:")
-                    print("NO BLADES IN A GUN FIGHT!")
-                    print(f'He reveals a {securityGuardLarry.weapon}.')
-                    print("You hear an earth shattering shot ring out.")
-                    print("Your head explodes.")
-                    dead()
-                    break
-                if stopLarry.lower() in ["2", "two"]:
-                    print("\nYou whip out the scroll and whisper" +
-                          " the activation word.")
-                    print("Larry squawks as he shrinks to the size " +
-                          "and shape of a regular hen.")
-                    print("But you scream as you see the key meld " +
-                          "with his body.")
-                    print("The key is gone, and there is no way " +
-                          "out of this pit room.")
-                    print("Other than the giant locked door.")
-                    print("\nYou eventually starve after eating Larry raw.")
-                    dead()
-                    break
-                else:
-                    print("\nLarry stamps on you before you can" +
-                          " decide anything.")
-                    dead()
-                    break
+            stopLarry = input("> ")
+            if stopLarry.lower() in ["1", "one"]:
+                print(f'You raise your {player.weapon}.')
+                print("Larry laughs. Loud and deep.")
+                print("\n         :Security Troll Larry:")
+                print("NO BLADES IN A GUN FIGHT!")
+                print(f'He reveals a {securityGuardLarry.weapon}.')
+                print("You hear an earth shattering shot ring out.")
+                print("Your head explodes.")
+                dead()
+                break
+            if stopLarry.lower() in ["2", "two"]:
+                print("\nYou whip out the scroll and whisper" +
+                      " the activation word.")
+                print("Larry squawks as he shrinks to the size " +
+                      "and shape of a regular hen.")
+                print("But you scream as you see the key meld " +
+                      "with his body.")
+                print("The key is gone, and there is no way " +
+                      "out of this pit room.")
+                print("Other than the giant locked door.")
+                print("\nYou eventually starve after eating Larry raw.")
+                dead()
+                break
+            else:
+                print("\nLarry stamps on you before you can" +
+                      " decide anything.")
+                dead()
+                break
     else:
         print("ERROR in ITEM 2")
         exit()
