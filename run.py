@@ -613,14 +613,14 @@ def goblinsQuestionFunc():
             print(f'I will trade you this {player.weapon} for ' +
                   f'that {mopeyGoblin.weapon} if you like?')
             print("\n          :Mopey Goblin:")
-            print("Really?! That would be great actually. Here you go.")
+            print("Really?! This'n is yours. Here you go.")
             takeUpAxe()
-            print("Just needs a wipe, thats all.")
-            print("I wouldn't hang about, the others arent keen on humans.")
+            print("Just needs a wipe, still a good'n.")
+            print("I wouldn't hang about, the others arent keen on humies.")
             print("You seem like one of the good ones. Go back " +
-                  "the way you came.")
+                  "the way you has come.")
             while True:
-                print("Do you trust the Goblin? (yes/no)")
+                print("\nDo you trust the Goblin? (yes/no)")
                 trustGoblin = input("> ")
                 if trustGoblin.lower() in ["yes", "y"]:
                     print(f"\n           :{player.name}:")
@@ -842,8 +842,41 @@ def secretTunnel():
 
 
 def slideToLarry():
-    print("Slide To Larry")
-    exit()
+    print("\nYou drag the desk from the cave wall. Pull open the hatch.")
+    print("Within is a smooth tunnel heading downwards. A slide.")
+    print("You give the wizard a nod and leap, sliding downward.")
+    print("\n         :Helpful Orb:")
+    print("He seemed nice. Bit of a weirdo. Why hasn't he left, if he " +
+          "knows the way out.")
+    print("\nThud. You land at the feet of a towering monstrosity.")
+    print("The troll is wearing a stretched and tattered black vest with " +
+          "a name badge.")
+    print("It bellows into your face.")
+    while True:
+        print("         :Security Troll Larry:")
+        print("WHAT IS YOUR NAME?!")
+        print("\nTell Larry your name? (yes/no)")
+        answerLarry = input("> ")
+        if answerLarry.lower() in ["yes", "y"]:
+            print(f"         :{player.name}:")
+            print(f"{player.name} from {player.home}")
+            break
+        elif answerLarry.lower() in ["no", "n"]:
+            print("\nYou stay quiet, staring at the beast in awe.")
+            print("Larry thinks you haven't heard him. And repeats himself.")
+        elif answerLarry.lower() in ["i", "inventory"]:
+            inventory(player)
+        else:
+            print("\nYou stay quiet, staring at the beast in awe.")
+            print("Larry thinks you haven't heard him. And repeats himself.")
+    print("\n         :Security Troll Larry:")
+    print("NOT ON THE LIST!!")
+    print("CAN'T USE THE DOOR. NOT ON THE LIST. DISPOSE OF THEM")
+    while True:
+        print("1-Defend yourself against Larry.")
+        print("2-")
+
+
 
 
 def hummusDemonEncounter():
