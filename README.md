@@ -118,5 +118,7 @@ This project was deployed using Code Institute's mock terminal for Heroku.
 - y - yes approach wizard
 - 3 - gift the wizard clothes
 - y - yes take tunnel
+- y - yes tell Larry your name
+- 2 - offer Larry potion
 
 

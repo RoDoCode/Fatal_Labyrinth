@@ -903,7 +903,8 @@ def slideToLarry():
                       " it whole.")
                 print("His hands swell until they are just " +
                       "slightly too big.")
-                print("Larry is thrilled, he opens the door for you " +
+                print("Larry is thrilled.")
+                print("He opens the door for you " +
                       "while staring at his giant mits giggling.")
                 outside()
                 break
@@ -955,6 +956,7 @@ def outside():
     print("You are alive, and all is well.")
     print("\nCONGRATULATIONS")
     print("YOU HAVE ESCAPED THE FATAL LABYRINTH")
+    print(f'\nNumber of deaths {deathCount}')
     exit()
 
 
