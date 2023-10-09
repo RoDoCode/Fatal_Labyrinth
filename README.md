@@ -53,6 +53,8 @@ Responses
 - More responses and options to dialogue.
 - Information and secrets system. If you learn certain pieces of information it can unlock new responses further down the line
 
+![Fatal Labyrinth Flow Chart](assets/fatal_flowchart.png)
+
 # Data Model
 
 I decided to use the Character class as my model. Each character, both the player and the computer controlled non-player characters are instances of the Character class. Their attribute values are supplied from a google sheet so that they were easier to control and edit game dynamics as the project developed. 
@@ -104,6 +106,8 @@ This project was deployed using Code Institute's mock terminal for Heroku.
 - My fiance who left me to my work while she is 3 months pregnant with our first child.
 
 ## SPOILER
+
+Fastest Route To the Finish
 
 - n - Name (Bob is default)
 - n - No memory
