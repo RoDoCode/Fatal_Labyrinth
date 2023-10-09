@@ -17,6 +17,9 @@ Users can try to find their way through the labyrinth while avoiding the gruesom
 - Intro non-player characters can be told that you remember what happened moments before so they don't repeat the same information to you. It is assumed that the Ladyrinth has magically revived you at this previous point in time before your death so that you can repeat the torture of the Labyrinth again and again. 
 
 - SPOILER: For the purposes of marking and avoiding confusion I have added the directions for how to clear the labyrinth at the bottom of this ReadMe so that examiners might navigate without aggrivation. The puzzle is designed to be challenging, there is a way out, but for those who prefer a hint, it is provided here. 
+
+![Fatal Labyrinth Am I Responsive](assets/amiresponsive_fatal_labyrinth.PNG)
+
 # Features
 
 Character Stats
