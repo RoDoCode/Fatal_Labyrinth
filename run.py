@@ -106,6 +106,10 @@ def noClothes():
     player.clothes = "nothing"
 
 
+def learnPotionName():
+    player.item2 = "vial of Enlarge Hands"
+
+
 def magicArmour():
     # adds magic armour
     player.clothes = "gleaming green armour"
@@ -313,13 +317,17 @@ def defendOrFreeze():
         if defendOrFreezeChoice.lower() in ["yes", "y"]:
             break
         elif defendOrFreezeChoice.lower() in ["no", "n"]:
-            print("Your arms go weak, you freeze with fear.")
+            print("\nYour arms go weak, you freeze with fear.")
+            print("The air is sucked from your lungs.")
+            print("The world goes silent as you stand in a vacuum.")
+            print("Only the feeling of the breeze on your skin remains.")
+            dead()
             break
         elif defendOrFreezeChoice.lower() in ["i", "inventory"]:
-            print("No time for that.")
+            print("\nNo time for that.")
             break
         else:
-            print("You aren't thinking clearly.")
+            print("\nYou aren't thinking clearly.")
             break
 
 
@@ -366,7 +374,6 @@ def firstChoice():
         firstChoice = input("> ")
         if firstChoice.lower() in ["left", "l"]:
             ("\nYou've decided to take the left tunnel.")
-            playerStats()
             airElementalEncounter()
             break
         elif firstChoice.lower() in ["right", "r"]:
@@ -379,14 +386,14 @@ def firstChoice():
                     print("You feel invigorated as the rune on the " +
                           "wall glows briefly.")
                     rune(player)
-                    playerStats()
                     goblinEncounterFunc()
                     break
                 elif duckRune.lower() in ["yes", "y"]:
                     print("You duck beneath the rune cautiously.")
-                    playerStats()
                     goblinEncounterFunc()
                     break
+                elif duckRune.lower() in ["i", "inventory"]:
+                    inventory(player)
                 else:
                     print("There's no turning back now.")
             break
@@ -414,7 +421,7 @@ def airElementalEncounter():
         print("You are sandblasted until there is nothing left but dust.")
         dead()
     elif elementalFight == "win":
-        print("You raise your sword and gulp a breath of air.")
+        print("\nYou raise your sword and gulp a breath of air.")
         print("You feel the wind buffeting your face and eroding your skin.")
         print("But you landed a hit!")
         print("The blowing sands cease and fall to the ground.")
@@ -606,7 +613,7 @@ def goblinsQuestionFunc():
             print(f'I will trade you this {player.weapon} for ' +
                   f'that {mopeyGoblin.weapon} if you like?')
             print("\n          :Mopey Goblin:")
-            print("Really?!That would be great actually. Here you go.")
+            print("Really?! That would be great actually. Here you go.")
             takeUpAxe()
             print("Just needs a wipe, thats all.")
             print("I wouldn't hang about, the others arent keen on humans.")
@@ -708,11 +715,11 @@ def nakedWizardEncounter():
     print("The wizard appears to have forgotten to dress himself.")
     print("\n         :Grand Wizard Methielteez:")
     print("It's hard at first, living in the labyrinth, " +
-          "but you'll get used to it")
-    print("\n1-Attack the Wizard!")
-    print("2-Offer to trade your potion with him for something of value")
-    print("3-Offer to give him your clothes as a gift")
+          "but you'll get used to it.")
     while True:
+        print("\n1-Attack the Wizard!")
+        print("2-Offer to trade your potion with him for something of value")
+        print("3-Offer to give him your clothes as a gift")
         wizardsChoice = input("> ")
         if wizardsChoice.lower() in ["1", "one"]:
             print("\nYou get bad vibes from the naked wizard.")
@@ -746,10 +753,11 @@ def nakedWizardEncounter():
         elif wizardsChoice.lower() in ["2", "two"]:
             print(f"\n           :{player.name}:")
             print("Always good to meet a fellow traveller. " +
-                  " Perhaps a trade? I have this potion.")
+                  "Perhaps a trade? I have this potion.")
             print("\n         :Grand Wizard Methielteez:")
             print("A vial of Enlarge Hands! An unusual elixir indeed.")
-            print("Let me see what I have around here. Ah how about this?")
+            learnPotionName()
+            print("Let me see what I have around here. Ah, how about this?")
             print("I have a scroll containing the spell Chickenify.")
             while True:
                 print("Do you want the power to Chickenify someone? (yes/no)")
@@ -777,7 +785,7 @@ def nakedWizardEncounter():
             print(f"\n           :{player.name}:")
             print("You're stark naked! You must be freezing.")
             print("You can have these? I'll find something else.")
-            print(f'\n You gesture to {player.clothes}.')
+            print(f'\nYou gesture to {player.clothes}.')
             print("\n         :Grand Wizard Methielteez:")
             print("Why thank you young one! Delightful. I accept.")
             noClothes()
@@ -823,6 +831,7 @@ def secretTunnel():
             print("\n         :Grand Wizard Methielteez:")
             print("Jolly good. There's a tunnel over there. No " +
                   "clue where it goes.")
+            print("You head out a small tunnel on the opposite cavern wall.")
             hummusDemonEncounter()
             break
         elif secretTunnelChoice.lower() in ["i", "inventory"]:
@@ -838,26 +847,40 @@ def slideToLarry():
 
 
 def hummusDemonEncounter():
-    print("Slide To Larry")
-    exit()
+    print("\n         :Helpful Orb:")
+    print("He seemed nice. Bit of a weirdo. We'll solve this one ourselves.")
+    print("\nFor a while you travel together in silence," +
+          " listening for threats.")
+    print("Abruptly a wet sound accompanies the appearance of a portal.")
+    print("The ovaloid doorway stands the width and height of the passageway.")
+    print("It is entirely opaque, made of a beige, porridge like substance.")
+    print("\n           :Hummus Demon:")
+    print(f'Aaaah {player.name} from the realm of {player.home}!')
+    print("You bring me the Orb and will yourself make a worthy sacrifice.")
+    print("\nYou are dragged into the hummus dimension and consumed.")
+    print("You are now one with THE GREAT POT.")
+    effectivelyDead()
 
 
 # GAME START
 
-print("__   __                             _         _   _                   ")
-print("\ \ / /                            (_)       | | | |                  ")
-print(" \ V /___  _   _    __ _ _ __ ___   _ _ __   | |_| |__   ___          ")
-print("  \ // _ \| | | |  / _` | '__/ _ \ | | '_ \  | __| '_ \ / _ \         ")
-print("  | | (_) | |_| | | (_| | | |  __/ | | | | | | |_| | | |  __/         ")
-print("  \_/\___/ \__,_|  \__,_|_|  \___| |_|_| |_|  \__|_| |_|\___|         ")
-print("______    _        _   _           _                _       _   _     ")
-print("|  ___|  | |      | | | |         | |              (_)     | | | |    ")
-print("| |_ __ _| |_ __ _| | | |     __ _| |__  _   _ _ __ _ _ __ | |_| |__  ")
-print("|  _/ _` | __/ _` | | | |    / _` | '_ \| | | | '__| | '_ \| __| '_ \ ")
-print("| || (_| | || (_| | | | |___| (_| | |_) | |_| | |  | | | | | |_| | | |")
-print("\_| \__,_|\__\__,_|_| \_____/\__,_|_.__/ \__, |_|  |_|_| |_|\__|_| |_|")
-print("                                          __/ |                       ")
-print("                                         |___/                        ")
+print(r"__   __                             _         _   _                  ")
+print(r"\ \ / /                            (_)       | | | |                 ")
+print(r" \ V /___  _   _    __ _ _ __ ___   _ _ __   | |_| |__   ___         ")
+print(r"  \ // _ \| | | |  / _` | '__/ _ \ | | '_ \  | __| '_ \ / _ \        ")
+print(r"  | | (_) | |_| | | (_| | | |  __/ | | | | | | |_| | | |  __/        ")
+print(r"  \_/\___/ \__,_|  \__,_|_|  \___| |_|_| |_|  \__|_| |_|\___|        ")
+print(r"______    _        _   _           _                _       _   _    ")
+print(r"|  ___|  | |      | | | |         | |              (_)     | | | |   ")
+print(r"| |_ __ _| |_ __ _| | | |     __ _| |__  _   _ _ __ _ _ __ | |_| |__ ")
+print("|  _/ _` | __/ _` | | | |    / _` | '_ \\| | | | '__| | '_ \\| __| " +
+      "'_ \\")
+print(r"| || (_| | || (_| | | | |___| (_| | |_) | |_| | |  | | | | | |_| |" +
+      " | |")
+print(r"\_| \__,_|\__\__,_|_| \_____/\__,_|_.__/ \__, |_|  |_|_| |_|\__|_|" +
+      " |_|")
+print(r"                                          __/ |                      ")
+print(r"                                         |___/                       ")
 
 gameStart()
 
