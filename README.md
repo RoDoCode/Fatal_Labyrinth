@@ -53,7 +53,7 @@ Responses
 - More responses and options to dialogue.
 - Information and secrets system. If you learn certain pieces of information it can unlock new responses further down the line
 
-![Fatal Labyrinth Flow Chart](assets/fatal_flowchart.png)
+![Fatal Labyrinth Flow Chart](assets/fatal_flowchart2.png)
 
 # Data Model
 
