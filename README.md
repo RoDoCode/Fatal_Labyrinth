@@ -90,6 +90,8 @@ I have manually tested this project by:
 - PEP8
     - No errors were returned from PEP8online.com
 
+![PEP8 Linter](assets/PEP8LINTER.PNG)
+
 ## Deployment
 
 This project was deployed using Code Institute's mock terminal for Heroku.
