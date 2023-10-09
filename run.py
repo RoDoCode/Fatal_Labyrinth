@@ -851,7 +851,10 @@ def slideToLarry():
     print("\nThud. You land at the feet of a towering monstrosity.")
     print("The troll is wearing a stretched and tattered black vest with " +
           "a name badge.")
-    print("It bellows into your face.")
+    print("At his belt is a single giant key.")
+    print("You notice his hands are disproportionately small for his size.")
+    print("Behind him there is a large stone door with carved label, EXIT.")
+    print("Larry bellows into your face.")
     while True:
         print("         :Security Troll Larry:")
         print("WHAT IS YOUR NAME?!")
@@ -874,7 +877,14 @@ def slideToLarry():
     print("CAN'T USE THE DOOR. NOT ON THE LIST. DISPOSE OF THEM")
     while True:
         print("1-Defend yourself against Larry.")
-        print("2-")
+        if player.item2 in ["Glittery Potion", "vial of Enlarge Hands"]:
+            print("2-Offer Larry the potion in you pocket.")
+        elif player.item2 in ["Chickenify Spell"]:
+            print("2-Use Chickenify spell scroll on Larry")
+        else:
+            print("ERROR in ITEM 2")
+        stopLarry = input("> ")
+
 
 
 
