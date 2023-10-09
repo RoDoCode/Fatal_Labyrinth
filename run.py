@@ -107,7 +107,7 @@ def noClothes():
 
 
 def magicArmour():
-    # adds magic armour 
+    # adds magic armour
     player.clothes = "gleaming green armour"
     player.defense = int(player.defense) * 2
 
@@ -204,10 +204,10 @@ def introThree():
     print("You are used to the air by now")
     print("You wait for the Orb to speak.")
     print("\n         :Helpful Orb:")
-    print(f'{player.name}. We've died {deathCount} times now.')
+    print(f"{player.name}. We've died {deathCount} times now.")
     print("We could stop. That last one was awful. I didn't like it at all.")
     print("The Labyrinth has brought us back here as usual.")
-    print('I don't think "Extra careful" is cutting it. We need a plan.')
+    print('I do not think "extra careful" is cutting it. We need a plan.')
     readyOne()
 
 
@@ -229,7 +229,7 @@ def dead():
         if tryAgain.lower() in ["yes", "y"]:
             if deathCount < 5:
                 introTwo()
-            else: 
+            else:
                 introThree()
             break
         elif tryAgain.lower() in ["no", "n"]:
@@ -566,8 +566,8 @@ def goblinsQuestionFunc():
         print('\n1- "Just looking for the way out mate?"')
         print('2- "No, I am taking my orb for a walk. Hope your stuff all' +
               ' works out."')
-        print(f'3- "I will trade you this {player.weapon} for that {mopeyGoblin.weapon} if' +
-              ' you like?"')
+        print(f'3- "I will trade you this {player.weapon} for that ' +
+              f'{mopeyGoblin.weapon} if you like?"')
         print('Enter the number of your choice')
         mopeyGoblinQuestion = input("> ")
         if mopeyGoblinQuestion.lower() in ["1", "one"]:
@@ -724,22 +724,22 @@ def nakedWizardEncounter():
                 dead()
             elif wizardFight == "dead":
                 print(f"\nYou rush the forgetful archanist, " +
-                        f"{player.weapon} raised to strike.")
+                      f"{player.weapon} raised to strike.")
                 print("However you fail to spot his hands.")
                 print("The wizard whips open a scroll of paper " +
-                        "and whispers a word.")
+                      "and whispers a word.")
                 print("You see the image of a chicken flash in the air.")
                 print("The world grows as feathers sprout from your skin.")
                 print("For a moment, it is agony, then your mind is calm.")
                 print("You are a chicken. You aren't worried " +
-                        "about anything anymore.")
+                      "about anything anymore.")
                 print("\n         :Grand Wizard Methielteez:")
                 print(f"Come on little {player.name}, lets find you a coop" +
-                        " to live in. That spell is permanent you know.")
+                      " to live in. That spell is permanent you know.")
                 effectivelyDead()
             else:
                 print("You both charge. Then draw back." +
-                        " No one will win this fight.")
+                      " No one will win this fight.")
                 print("You nod at each other and he points to a tunnel")
                 secretTunnel()
             break
@@ -764,7 +764,8 @@ def nakedWizardEncounter():
                     break
                 elif chickenifyOffer.lower() in ["no", "n"]:
                     print("\n         :Grand Wizard Methielteez:")
-                    print("Fair enough. Not everyone want to turn someone else into a chicken.")
+                    print("Fair enough. Not everyone want to turn someone" +
+                          " else into a chicken.")
                     secretTunnel()
                     break
                 elif chickenifyOffer.lower() in ["i", "inventory"]:
@@ -775,8 +776,8 @@ def nakedWizardEncounter():
         elif wizardsChoice.lower() in ["3", "three"]:
             print(f"\n           :{player.name}:")
             print("You're stark naked! You must be freezing.")
-            print("You can have these? I'll find something else.)
-            print(f'\n You gesture to {player.clothes}.)
+            print("You can have these? I'll find something else.")
+            print(f'\n You gesture to {player.clothes}.')
             print("\n         :Grand Wizard Methielteez:")
             print("Why thank you young one! Delightful. I accept.")
             noClothes()
@@ -787,7 +788,7 @@ def nakedWizardEncounter():
             print("A set of gleaming green armour aparates all " +
                   "about you. It fits perfectly.")
             print("\n         :Grand Wizard Methielteez:")
-            print("That's better. Oh these are comfy, and still warm.)
+            print("That's better. Oh these are comfy, and still warm.")
             print("You see what I mean about the green; hideous.")
             secretTunnel()
             break
@@ -797,16 +798,17 @@ def nakedWizardEncounter():
             print("You blurt out a weird sound and" +
                   " the wizard waits unsurprised.")
 
+
 def secretTunnel():
     print("\nYou chat with the wizard for a short time and" +
           " explain your situation")
     print("\n         :Grand Wizard Methielteez:")
     print("If you and the Orb are looking for a way out you're almost there.")
     print("Theres a tunnel under my desk which leads directly " +
-          "to an EXIT door".)
+          "to an EXIT door.")
     print("But the door is guarded by a troll named Larry who" +
           " used to be a bouncer.")
-    print("You'll have a hard time getting passed him.)
+    print("You'll have a hard time getting passed him.")
     while True:
         print("\nDo you want to take the tunnel? (yes/no)")
         secretTunnelChoice = input("> ")
@@ -821,7 +823,7 @@ def secretTunnel():
             print("\n         :Grand Wizard Methielteez:")
             print("Jolly good. There's a tunnel over there. No " +
                   "clue where it goes.")
-            hummusDemon()
+            hummusDemonEncounter()
             break
         elif secretTunnelChoice.lower() in ["i", "inventory"]:
             inventory(player)
@@ -829,9 +831,16 @@ def secretTunnel():
             print("\n         :Grand Wizard Methielteez:")
             print("I'm not sure what you mean youngling")
 
-def slideToLarry()
 
-def hummusDemon()
+def slideToLarry():
+    print("Slide To Larry")
+    exit()
+
+
+def hummusDemonEncounter():
+    print("Slide To Larry")
+    exit()
+
 
 # GAME START
 

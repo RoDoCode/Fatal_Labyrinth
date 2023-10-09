@@ -57,16 +57,18 @@ Responses
 
 I decided to use the Character class as my model. Each character, both the player and the computer controlled non-player characters are instances of the Character class. Their attribute values are supplied from a google sheet so that they were easier to control and edit game dynamics as the project developed. 
 
-The Character class stores stats, details and inventory. The class also has methods to help play the game. Such as the inventory method which prints the contents of the inventory to the player. 
+The Character class stores stats, details and inventory. There are several functions which interact with the instances to change or display their attribute values. Such as the inventory method which prints the contents of the inventory to the player. 
 
 ## Testing
 
-I have manually tested this project by doing the 
+I have manually tested this project by:
 
-- Passed the code through a PEP8 linter and confirmed there are no problems.
+- Passing the code through a PEP8 linter and confirmed there are no problems.
 - Given invalid inputs; strings when numbers are expected, out of bounds inputs.
--  I have tested every available choice with both variations of how a player may choose to write the answer in numbers or letters. 
-- Test in my local terminal and the Code Institute Heroku terminal.
+- I have tested every available choice with both variations of how a player may choose to write the answer in numbers or letters. 
+- Play tested all the permutations which lead to an ending.
+- Tested in my local terminal and the Code Institute Heroku terminal.
+- Tested the Heroku terminal on multiple devices, inluding an iphone. 
 
 # Bugs
 
